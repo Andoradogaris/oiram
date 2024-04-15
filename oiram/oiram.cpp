@@ -6,6 +6,9 @@
 
 float gravityScale = 0.1f;
 sf::CircleShape Player(50.f);
+sf::RectangleShape rectangle(sf::Vector2f(100.f, 100.f));
+sf::RectangleShape rectangle2(sf::Vector2f(100.f, 100.f));
+
 
 void ApplyGravity(sf::CircleShape& shape)
 {
@@ -16,6 +19,12 @@ void ApplyGravity(sf::CircleShape& shape)
 
 int main()
 {
+    rectangle.setPosition(sf::Vector2f(0.f, 300.f));
+    rectangle2.setPosition(sf::Vector2f(100.f, 500.f));
+    sf::FloatRect playerCol;
+    sf::FloatRect rectangleCol;
+    sf::FloatRect rectangle2Col;
+
     sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
 
     // run the program as long as the window is open
@@ -30,18 +39,29 @@ int main()
                 window.close();
         }
 
+        playerCol = Player.getGlobalBounds();
+        rectangleCol = rectangle.getGlobalBounds();
+        rectangle2Col = rectangle2.getGlobalBounds();
 
-        ApplyGravity(shape);
+        if (!playerCol.intersects(rectangleCol) && !playerCol.intersects(rectangle2Col))
+        {
+            ApplyGravity(Player);
+        }
+        else {
+            Player.move(0.005f, 0.f);
+        }
 
         // set the shape color to green
-        shape.setFillColor(sf::Color(100, 250, 50));
+        Player.setFillColor(sf::Color(100, 250, 50));
 
         // clear the window with black color
         window.clear(sf::Color::Black);
 
         // draw everything here...
         // window.draw(...);
-        window.draw(shape);
+        window.draw(Player);
+        window.draw(rectangle);
+        window.draw(rectangle2);
 
         // end the current frame
         window.display();
