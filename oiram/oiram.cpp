@@ -4,6 +4,16 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
+float gravityScale = 0.1f;
+sf::CircleShape Player(50.f);
+
+void ApplyGravity(sf::CircleShape& shape)
+{
+    //sf::Time time;
+    shape.move(0.f,  gravityScale);
+    //shape.setPosition(shape.getPosition().x, shape.getPosition().y + gravityScale * time.asSeconds());
+}
+
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
@@ -20,7 +30,8 @@ int main()
                 window.close();
         }
 
-        sf::CircleShape shape(50.f);
+
+        ApplyGravity(shape);
 
         // set the shape color to green
         shape.setFillColor(sf::Color(100, 250, 50));
@@ -38,6 +49,7 @@ int main()
 
     return 0;
 }
+
 
 // Exécuter le programme : Ctrl+F5 ou menu Déboguer > Exécuter sans débogage
 // Déboguer le programme : F5 ou menu Déboguer > Démarrer le débogage
