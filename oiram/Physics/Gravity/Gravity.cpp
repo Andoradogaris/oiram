@@ -1,6 +1,6 @@
 #include "Gravity.h"
 
-
+const float Gravity::gravityScale = .01f;
 
 sf::Vector2f Gravity::ApplyGravity(sf::CircleShape& shape)
 {
