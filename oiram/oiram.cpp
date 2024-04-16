@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "Engine.h"
+#include "Physics/ApplyPhysics.h"
 
 sf::CircleShape Player(50.f);
 sf::RectangleShape rectangle(sf::Vector2f(100.f, 100.f));
@@ -35,7 +36,7 @@ int main()
 
         if (!playerCol.intersects(rectangleCol) && !playerCol.intersects(rectangle2Col))
         {
-            ApplyGravity(Player);
+            ApplyPhysics::CreatePhysics(Player);
         }
         else {
             Player.move(0.005f, 0.f);

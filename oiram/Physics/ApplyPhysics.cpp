@@ -1,7 +1,10 @@
 #include "ApplyPhysics.h"
 
-void ApplyPhysics::GetNextMovement()
+ sf::Vector2f ApplyPhysics::movement;
+
+void ApplyPhysics::CreatePhysics(sf::CircleShape& shape)
 {
-    sf::CircleShape Player(50.f);
-    Player.setPosition(Gravity::ApplyGravity(Player));
+    movement = Gravity::ApplyGravity(shape);
+    
+    shape.move(movement);
 }
