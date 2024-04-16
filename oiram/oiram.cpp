@@ -3,7 +3,8 @@
 
 #include <iostream>
 #include "Engine.h"
-
+#include "Physics/ApplyPhysics.h"
+#include <windows.h>
 sf::CircleShape Player(50.f);
 sf::RectangleShape rectangle(sf::Vector2f(100.f, 100.f));
 sf::RectangleShape rectangle2(sf::Vector2f(100.f, 100.f));
@@ -12,6 +13,13 @@ sf::RectangleShape rectangle2(sf::Vector2f(100.f, 100.f));
 
 int main()
 {
+    RECT desktop;
+    GetWindowRect(GetDesktopWindow(), &desktop);
+    int horizontal = desktop.right;
+    int vertical = desktop.bottom;
+
+    std::cout << horizontal << " " << vertical;
+    
     rectangle.setPosition(sf::Vector2f(0.f, 300.f));
     rectangle2.setPosition(sf::Vector2f(100.f, 500.f));
     sf::FloatRect playerCol;
@@ -35,7 +43,7 @@ int main()
 
         if (!playerCol.intersects(rectangleCol) && !playerCol.intersects(rectangle2Col))
         {
-            ApplyGravity(Player);
+            Gravity::ApplyGravity(Player);
         }
         else {
             Player.move(0.005f, 0.f);
