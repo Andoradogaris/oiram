@@ -11,7 +11,8 @@ sf::RectangleShape rectangle2(sf::Vector2f(100.f, 100.f));
 
 void ApplyGravity(sf::CircleShape& shape)
 {
-    shape.move(0.f,  .001f);
+    shape.move(0.f, gravityScale);
+
 }
 
 int main()
