@@ -4,16 +4,11 @@
 #include <iostream>
 #include "Engine.h"
 
-float gravityScale = 0.1f;
 sf::CircleShape Player(50.f);
 sf::RectangleShape rectangle(sf::Vector2f(100.f, 100.f));
 sf::RectangleShape rectangle2(sf::Vector2f(100.f, 100.f));
 
-void ApplyGravity(sf::CircleShape& shape)
-{
-    shape.move(0.f, gravityScale);
 
-}
 
 int main()
 {
