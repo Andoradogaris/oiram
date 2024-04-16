@@ -4,6 +4,8 @@
 
 class ApplyPhysics
 {
+private:
+    static sf::Vector2f movement;
 public:
-    void GetNextMovement();
+    static void CreatePhysics(sf::CircleShape& shape);
 };
