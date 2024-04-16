@@ -1,5 +1,7 @@
 #pragma once
-class SgnalSlot
+#include "../Engine.h"
+
+class SgnalSlot :Engine
 {
 };
 

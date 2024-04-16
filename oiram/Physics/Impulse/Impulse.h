@@ -1,5 +1,7 @@
 #pragma once
-class Impulse
+#include "../../Engine.h"
+
+class Impulse:Engine
 {
 };
 

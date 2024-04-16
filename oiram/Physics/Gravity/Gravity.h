@@ -1,5 +1,7 @@
 #pragma once
-class Gravity
+#include "../../Engine.h"
+
+class Gravity : Engine
 {
 };
 

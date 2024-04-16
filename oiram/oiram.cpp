@@ -2,7 +2,7 @@
 //
 
 #include <iostream>
-#include <SFML/Graphics.hpp>
+#include "Engine.h"
 
 float gravityScale = 0.1f;
 sf::CircleShape Player(50.f);

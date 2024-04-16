@@ -1,5 +1,7 @@
 #pragma once
-class Factory
+#include "../Engine.h"
+
+class Factory:Engine
 {
 };
 

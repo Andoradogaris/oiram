@@ -1,5 +1,7 @@
 #pragma once
-class ECS
+#include "../Engine.h"
+
+class ECS:Engine
 {
 };
 

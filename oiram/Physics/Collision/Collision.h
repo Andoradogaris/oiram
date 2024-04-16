@@ -1,5 +1,7 @@
 #pragma once
-class Collision
+#include "../../Engine.h"
+
+class Collision:Engine
 {
 };
 
