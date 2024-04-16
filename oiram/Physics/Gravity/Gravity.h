@@ -4,9 +4,9 @@
 class Gravity : Engine
 {
 private:
-    const float gravityScale = 0.1f;
+    static const float gravityScale;
     
 public :
-    sf::Vector2f ApplyGravity(sf::CircleShape& shape);
+    static sf::Vector2f ApplyGravity(sf::CircleShape& shape);
 };
 
