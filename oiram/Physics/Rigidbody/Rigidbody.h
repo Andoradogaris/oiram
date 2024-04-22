@@ -5,11 +5,11 @@
 class Rigidbody: public Components
 {
 private:
-    static const float gravityScale;
+    const float gravityScale = 0.1f;
     
     public :
-        static sf::Vector2f Gravity(float multiplier = 1.f);
-        static sf::Vector2f Move(sf::Vector2f positions);
+        sf::Vector2f Gravity(float multiplier = 1.f);
+        sf::Vector2f Move(sf::Vector2f positions);
 };
 
 

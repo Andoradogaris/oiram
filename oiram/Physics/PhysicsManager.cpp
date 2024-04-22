@@ -1,14 +1,18 @@
 #include "PhysicsManager.h"
+
+#include <iostream>
+
 #include "Rigidbody/Rigidbody.h"
 
-sf::Vector2f ApplyPhysics::movement;
-
-void ApplyPhysics::CreatePhysics(sf::CircleShape& shape, sf::Vector2f& force)
+void ApplyPhysics::CreatePhysics(sf::CircleShape& shape, const sf::Vector2f& force)
 {
-    movement += Rigidbody::Gravity();
-    movement += Rigidbody::Move(force);
+    Rigidbody rb;
+    
+    movement += rb.Gravity();
+    movement += rb.Move(force);
     
     shape.move(movement);
-    
+    //std::cout << movement.x << movement.y << std::endl;
+
     movement = sf::Vector2f(0.f, 0.f);
 }

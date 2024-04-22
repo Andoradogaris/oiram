@@ -1,10 +1,10 @@
 #pragma once
 #include "../Engine.h"
 
-class ApplyPhysics: Engine
+class ApplyPhysics : public Engine
 {
 private:
-    static sf::Vector2f movement;
+    sf::Vector2f movement;
 public:
-    static void CreatePhysics(sf::CircleShape& shape, sf::Vector2f& force);
+    void CreatePhysics(sf::CircleShape& shape, const sf::Vector2f& force);
 };
