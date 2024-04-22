@@ -1,11 +1,13 @@
 #include "ApplyPhysics.h"
 
- sf::Vector2f ApplyPhysics::movement;
+#include "Rigidbody/Rigidbody.h"
+
+sf::Vector2f ApplyPhysics::movement;
 
 void ApplyPhysics::CreatePhysics(sf::CircleShape& shape, sf::Vector2f& force)
 {
-    movement += Gravity::ApplyGravity(shape);
-    movement += Impulse::AddForce(force);
+    movement += Rigidbody::Gravity();
+    movement += Rigidbody::Move(force);
     
     shape.move(movement);
     
