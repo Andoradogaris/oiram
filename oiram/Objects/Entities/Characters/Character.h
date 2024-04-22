@@ -4,5 +4,5 @@
 class Character : Entity
 {
 public:
-    
+    void InitCharacterComponents();
 };

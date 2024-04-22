@@ -3,7 +3,7 @@
 #include "../Components.h"
 
 
-class Transform : Components
+class Transform : public Components
 {
 public:
     sf::Vector2f position;

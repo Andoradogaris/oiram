@@ -3,7 +3,7 @@
 #include <list>
 
 #include "../../Engine.h"
-#include "../../Physics/Components.h"
+#include "Component/Components.h"
 
 
 class Entity
@@ -11,5 +11,6 @@ class Entity
 private:
     std::list<Components> components;
 public:
-    
+    void InitializeEntity();
+    void AddComponent(Components component);
 };
