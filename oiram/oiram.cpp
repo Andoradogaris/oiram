@@ -4,10 +4,8 @@
 #include <iostream>
 #include "Engine.h"
 #include "Physics/ApplyPhysics.h"
-<<<<<<< HEAD
-=======
 #include <windows.h>
->>>>>>> 96096a90cdb48b25fdf8050d2fd893441f393b9d
+
 
 sf::CircleShape Player(50.f);
 sf::RectangleShape rectangle(sf::Vector2f(100.f, 100.f));
