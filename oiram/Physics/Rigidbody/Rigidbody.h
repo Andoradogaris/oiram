@@ -12,8 +12,3 @@ private:
         sf::Vector2f Move(sf::Vector2f positions);
 };
 
-
-#pragma once
-#include "../Character.h"
-#include "../../../GameObject.h"
-
