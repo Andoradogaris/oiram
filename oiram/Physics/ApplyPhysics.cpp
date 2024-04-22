@@ -1,5 +1,4 @@
 #include "ApplyPhysics.h"
-
 #include "Rigidbody/Rigidbody.h"
 
 sf::Vector2f ApplyPhysics::movement;
