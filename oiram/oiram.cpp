@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include "Engine.h"
-#include "Physics/ApplyPhysics.h"
+#include "Physics/PhysicsManager.h"
 #include <windows.h>
 
 sf::CircleShape Player(50.f);
