@@ -2,7 +2,7 @@
 
 #include "../../../GameObject.h"
 
-Entity Player::GetClass()
+/*Entity Player::GetClass()
 {
     // return this;
-}
+}*/

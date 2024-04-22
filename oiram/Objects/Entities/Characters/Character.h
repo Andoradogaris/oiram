@@ -1,7 +1,7 @@
 #pragma once
 #include "../Entity.h"
 
-class Character : Entity
+class Character : public Entity
 {
 public:
     void InitCharacterComponents();
