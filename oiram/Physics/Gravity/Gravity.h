@@ -5,8 +5,7 @@ class Gravity : Engine
 {
 private:
     static const float gravityScale;
-    
-public :
+public:
     static sf::Vector2f ApplyGravity(sf::CircleShape& shape);
 };
 
