@@ -11,5 +11,10 @@ std::map<std::string, std::string> spriteMap = {
 void Renderer::SetTexture(Entity& entity)
 {
     
-    // if(!texture.loadFromFile(spriteMap[]));
+    if(!texture.loadFromFile(spriteMap[entity.GetClass()]))
+    {
+        std::cout << "alerte" << std::endl;
+    }
+    sprite.setTexture(texture);
+    sprite.setScale(1,1);
 }

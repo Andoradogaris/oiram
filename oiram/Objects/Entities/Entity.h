@@ -13,4 +13,5 @@ private:
 public:
     void InitializeEntity();
     void AddComponent(Components component);
+    virtual std::string GetClass();
 };
