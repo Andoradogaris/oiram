@@ -1,5 +1,6 @@
 ﻿#include "WindowManager.h"
 
+std::list<GameObject> objectToDraw;
 
 void WindowManager::WindowDraw()
 {
@@ -9,4 +10,21 @@ void WindowManager::WindowDraw()
     int vertical = desktop.bottom;
 
     sf::RenderWindow window(sf::VideoMode(horizontal, vertical), "My window");
+
+    while (window.isOpen())
+    {
+        window.clear(sf::Color::Black);
+        for (GameObject obj : objectToDraw)
+        {
+            // window.draw(obj);
+        }
+
+        window.display();
+    }
+}
+
+void AddNewObject(GameObject& object)
+{
+    objectToDraw.push_back(object);
+    
 }
