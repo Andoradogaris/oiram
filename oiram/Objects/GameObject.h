@@ -5,6 +5,4 @@ class GameObject
 {
 private:
     std::string name;
-public:
-    
 };

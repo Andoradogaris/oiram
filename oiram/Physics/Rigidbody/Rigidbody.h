@@ -1,8 +1,8 @@
 #pragma once
 #include "../../Engine.h"
+#include "../Components.h"
 
-
-class Rigidbody:Engine
+class Rigidbody: public Components
 {
 private:
     static const float gravityScale;

@@ -2,9 +2,13 @@
 //
 
 #include <iostream>
+#include <list>
+
 #include "Engine.h"
 #include "Physics/PhysicsManager.h"
 #include <windows.h>
+
+#include "Objects/GameObject.h"
 
 sf::CircleShape Player(50.f);
 sf::RectangleShape rectangle(sf::Vector2f(100.f, 100.f));
@@ -14,7 +18,7 @@ sf::Vector2f testImpulseForce(.001f, 0.f);
 
 
 int main()
-{
+{    
     rectangle.setPosition(sf::Vector2f(0.f, 300.f));
     rectangle2.setPosition(sf::Vector2f(100.f, 500.f));
     sf::FloatRect playerCol;
