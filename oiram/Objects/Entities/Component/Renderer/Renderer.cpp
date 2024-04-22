@@ -8,7 +8,7 @@ std::map<std::string, std::string> spriteMap = {
     {"Obstacle","Assets/block_projet.png"}
 };
 
-void SetTexture(Entity& entity)
+void Renderer::SetTexture(Entity& entity)
 {
-    if(!texture.loadFromFile(spriteMap[]));
+    // if(!texture.loadFromFile(spriteMap[]));
 }

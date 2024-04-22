@@ -23,7 +23,7 @@ void WindowManager::WindowDraw()
     }
 }
 
-void AddNewObject(GameObject& object)
+void WindowManager::AddNewObject(GameObject& object)
 {
     objectToDraw.push_back(object);
     
