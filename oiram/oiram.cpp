@@ -4,14 +4,12 @@
 #include <iostream>
 #include "Engine.h"
 #include "Physics/ApplyPhysics.h"
-<<<<<<< HEAD
-=======
 #include <windows.h>
->>>>>>> 96096a90cdb48b25fdf8050d2fd893441f393b9d
 
 sf::CircleShape Player(50.f);
 sf::RectangleShape rectangle(sf::Vector2f(100.f, 100.f));
 sf::RectangleShape rectangle2(sf::Vector2f(100.f, 100.f));
+sf::Vector2f testImpulseForce(.001f, 0.f);
 
 
 
@@ -40,7 +38,7 @@ int main()
 
         if (!playerCol.intersects(rectangleCol) && !playerCol.intersects(rectangle2Col))
         {
-            ApplyPhysics::CreatePhysics(Player);
+            ApplyPhysics::CreatePhysics(Player, testImpulseForce);
         }
         else {
             Player.move(0.005f, 0.f);
