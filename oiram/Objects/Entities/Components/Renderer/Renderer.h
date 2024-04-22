@@ -5,13 +5,14 @@
 #include <map>
 
 #include "../../Entity.h"
+#include "../../Characters/Player/Player.h"
 
 class Renderer : public Components
 {
-
-    
+private:
+    std::map<std::string, std::string> spriteMap;
 public:
-    std::map<Entity, std::string> spriteMap = {};
+    
     sf::Texture texture;
     sf::Sprite sprite;
     void SetTexture(Entity& entity);
