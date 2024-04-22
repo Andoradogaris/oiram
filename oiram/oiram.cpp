@@ -47,8 +47,6 @@ int main()
         else {
             Player.move(0.005f, 0.f);
         }
- 
-        
 
         Player.setFillColor(sf::Color(100, 250, 50));
 
