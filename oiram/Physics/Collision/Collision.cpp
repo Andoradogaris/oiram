@@ -1,8 +1,10 @@
 #include "Collision.h"
 
-bool checkCollision(sf::FloatRect playerCol, std::list<sf::FloatRect> collidersToCheck)
-{
 
+
+bool Collision::checkCollision(sf::FloatRect playerCol, std::list<sf::FloatRect> collidersToCheck)
+{
+    
     for (const auto& col : collidersToCheck)
     {
         if (playerCol.intersects(col))

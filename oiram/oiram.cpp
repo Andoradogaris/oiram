@@ -6,6 +6,7 @@
 
 #include "Engine.h"
 #include "Physics/PhysicsManager.h"
+#include "Physics/Collision/Collision.h"
 #include <windows.h>
 
 #include "Objects/GameObject.h"
@@ -17,13 +18,16 @@ sf::Vector2f testImpulseForce(.001f, 0.f);
 
 
 
+
 int main()
-{    
+{
+    sf::Clock clock;
     rectangle.setPosition(sf::Vector2f(0.f, 300.f));
     rectangle2.setPosition(sf::Vector2f(100.f, 500.f));
     sf::FloatRect playerCol;
-    sf::FloatRect rectangleCol;
-    sf::FloatRect rectangle2Col;
+    std::list<sf::FloatRect> platformsCols;
+    Collision collision;
+    ApplyPhysics applyPhysics;
 
     sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
 
@@ -37,15 +41,18 @@ int main()
         }
 
         playerCol = Player.getGlobalBounds();
-        rectangleCol = rectangle.getGlobalBounds();
-        rectangle2Col = rectangle2.getGlobalBounds();
+        platformsCols.push_back(rectangle.getGlobalBounds());
+        platformsCols.push_back(rectangle2.getGlobalBounds());
+        clock.restart();
 
-        if (!playerCol.intersects(rectangleCol) && !playerCol.intersects(rectangle2Col))
+        float deltaTime = clock.restart().asSeconds();
+        
+        if (!collision.checkCollision(playerCol, platformsCols))
         {
-            ApplyPhysics::CreatePhysics(Player, testImpulseForce);
+            applyPhysics.CreatePhysics(Player, testImpulseForce * deltaTime);
         }
         else {
-            Player.move(0.005f, 0.f);
+            Player.move(0.05f, 0.f);
         }
 
         Player.setFillColor(sf::Color(100, 250, 50));
