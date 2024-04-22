@@ -1,6 +1,6 @@
 #include "Entity.h"
 
-#include "Component/Transform/Transform.h"
+#include "Components/Transform/Transform.h"
 
 void Entity::AddComponent(Components component)
 {

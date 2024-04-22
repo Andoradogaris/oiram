@@ -3,7 +3,7 @@
 #include <list>
 
 #include "../../Engine.h"
-#include "Component/Components.h"
+#include "Components/Components.h"
 
 
 class Entity

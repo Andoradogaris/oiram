@@ -1,7 +1,9 @@
 #pragma once
-#include "../../Engine.h"
+#include "../../Objects/Entities/Components/Components.h"
 
-class Collision:Engine
+class Collision : Components
 {
+public :
+    
 };
 

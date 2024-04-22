@@ -1,11 +1,12 @@
 ﻿#pragma once
+
 #include "../Components.h"
 #include "../../../../Engine.h"
 #include <map>
 
 #include "../../Entity.h"
 
-class Renderer : Components
+class Renderer : public Components
 {
 
     

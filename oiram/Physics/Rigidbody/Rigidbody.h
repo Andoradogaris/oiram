@@ -1,6 +1,6 @@
 #pragma once
 #include "../../Engine.h"
-#include "../Components.h"
+#include "../../Objects/Entities/Components/Components.h"
 
 class Rigidbody: public Components
 {
