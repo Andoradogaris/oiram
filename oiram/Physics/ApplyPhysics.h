@@ -1,7 +1,6 @@
 #pragma once
 #include "../Engine.h"
-#include "Gravity/Gravity.h"
-#include "Impulse/Impulse.h"
+
 
 class ApplyPhysics: Engine
 {
