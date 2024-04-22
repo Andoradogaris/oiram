@@ -5,5 +5,5 @@
 class Player : public Character
 {
 public:
-    //Entity GetClass();
+    std::string GetClass();
 };

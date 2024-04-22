@@ -11,3 +11,9 @@ private:
         sf::Vector2f Gravity(float multiplier = 1.f);
         sf::Vector2f Move(sf::Vector2f positions);
 };
+
+
+#pragma once
+#include "../Character.h"
+#include "../../../GameObject.h"
+
