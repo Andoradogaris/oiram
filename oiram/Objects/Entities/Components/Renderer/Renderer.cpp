@@ -10,5 +10,6 @@ std::map<std::string, std::string> spriteMap = {
 
 void Renderer::SetTexture(Entity& entity)
 {
+    
     // if(!texture.loadFromFile(spriteMap[]));
 }

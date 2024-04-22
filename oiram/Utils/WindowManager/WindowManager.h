@@ -11,5 +11,5 @@ private:
     std::list<GameObject> objectToDraw;
 public:
     void WindowDraw();
-    void AddNewObject(GameObject& object);
+    void AddNewObject(GameObject object);
 };

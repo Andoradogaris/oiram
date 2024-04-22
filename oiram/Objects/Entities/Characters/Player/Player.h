@@ -2,8 +2,8 @@
 #include "../Character.h"
 #include "../../../GameObject.h"
 
-class Player : Character
+class Player : public Character
 {
 public:
-    Entity GetClass();
+    std::string GetClass();
 };
