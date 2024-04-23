@@ -2,7 +2,7 @@
 
 #include "../../Objects/Entities/Components/Renderer/Renderer.h"
 
-std::list<GameObject> objectToDraw;
+std::list<Renderer*> objectToDraw;
 
 void WindowManager::WindowDraw()
 {
@@ -15,9 +15,9 @@ void WindowManager::WindowDraw()
     while (window.isOpen())
     {
         window.clear(sf::Color::Black);
-        for (GameObject obj : objectToDraw)
+        for (Renderer* obj : objectToDraw)
         {
-            // window.draw(obj);
+            window.draw(obj->sprite);
         }
 
         window.display();
@@ -25,8 +25,8 @@ void WindowManager::WindowDraw()
 
 }
 
-void WindowManager::AddNewObject(GameObject object)
+void WindowManager::AddNewObject(Renderer object)
 {
-    objectToDraw.push_back(object);
+    objectToDraw.push_back(&object);
     
 }

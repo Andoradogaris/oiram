@@ -5,7 +5,7 @@
 #include <map>
 
 #include "../../Entity.h"
-#include "../../Characters/Player/Player.h"
+
 
 class Renderer : public Components
 {

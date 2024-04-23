@@ -4,14 +4,17 @@
 
 #include "../../Engine.h"
 #include "Components/Components.h"
+#include "Components/Renderer/Renderer.h"
+#include "Components/Transform/Transform.h"
 
 
 class Entity
 {
-private:
-    std::list<Components> components;
+
+    
 public:
     void InitializeEntity();
     void AddComponent(Components component);
     virtual std::string GetClass();
+    std::list<Components> components;
 };

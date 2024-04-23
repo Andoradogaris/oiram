@@ -8,8 +8,8 @@ void ApplyPhysics::CreatePhysics(sf::CircleShape& shape, const Vector2<float>& f
 {
     Rigidbody rb;
     
-    movement += rb.Gravity();
-    movement += rb.Move(force);
+    // movement += rb.Gravity();
+    // movement += rb.Move(force);
     
     shape.move(movement);
     //std::cout << movement.x << movement.y << std::endl;

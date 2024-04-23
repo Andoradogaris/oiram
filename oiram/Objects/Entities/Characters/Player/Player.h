@@ -4,6 +4,8 @@
 
 class Player : public Character
 {
+
 public:
-    __override std::string GetClass();
+    Player();
+    std::string GetClass() override;
 };
