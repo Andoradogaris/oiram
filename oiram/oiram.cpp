@@ -14,7 +14,7 @@
 sf::CircleShape Player(50.f);
 sf::RectangleShape rectangle(sf::Vector2f(100.f, 100.f));
 sf::RectangleShape rectangle2(sf::Vector2f(100.f, 100.f));
-sf::Vector2f testImpulseForce(.001f, 0.f);
+Vector2<float> testImpulseForce(.001f, 0.f);
 
 
 

@@ -6,7 +6,7 @@
 class Transform : public Components
 {
 public:
-    sf::Vector2f position;
-    sf::Vector2f rotation;
-    sf::Vector2f scale;
+    Vector2<float> position;
+    Vector2<float> rotation;
+    Vector2<float> scale;
 };

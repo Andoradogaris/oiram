@@ -9,6 +9,6 @@ private:
     
     public :
         sf::Vector2f Gravity(float multiplier = 1.f);
-        sf::Vector2f Move(sf::Vector2f positions);
+        sf::Vector2f Move(Vector2<float> positions);
 };
 

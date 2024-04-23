@@ -6,5 +6,5 @@ class ApplyPhysics : public Engine
 private:
     sf::Vector2f movement;
 public:
-    void CreatePhysics(sf::CircleShape& shape, const sf::Vector2f& force);
+    void CreatePhysics(sf::CircleShape& shape, const Vector2<float>& force);
 };

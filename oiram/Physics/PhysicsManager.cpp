@@ -4,7 +4,7 @@
 
 #include "Rigidbody/Rigidbody.h"
 
-void ApplyPhysics::CreatePhysics(sf::CircleShape& shape, const sf::Vector2f& force)
+void ApplyPhysics::CreatePhysics(sf::CircleShape& shape, const Vector2<float>& force)
 {
     Rigidbody rb;
     
