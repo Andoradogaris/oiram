@@ -1,7 +1,7 @@
 #pragma once
 #include "../Character.h"
 
-class Boomga : Character
+class Boomga : public Character
 {
 public:
     

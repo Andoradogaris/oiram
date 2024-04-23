@@ -1,10 +1,10 @@
 ﻿#pragma once
 
+#include <map>
 #include "../Components.h"
 #include "../../../../Engine.h"
-#include <map>
+class Entity;
 
-#include "../../Entity.h"
 
 
 class Renderer : public Components
@@ -15,5 +15,5 @@ public:
     
     sf::Texture texture;
     sf::Sprite sprite;
-    void SetTexture(Entity& entity);
+    void SetTexture(Entity* entity);
 };

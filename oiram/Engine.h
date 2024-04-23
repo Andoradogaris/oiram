@@ -3,9 +3,3 @@
 #include <iostream>
 #include "Maths/Vector2.h"
 
-class Engine
-{
-
-public:
-    
-};

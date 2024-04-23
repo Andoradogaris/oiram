@@ -4,8 +4,7 @@
 
 #include "../../Engine.h"
 #include "Components/Components.h"
-#include "Components/Renderer/Renderer.h"
-#include "Components/Transform/Transform.h"
+
 
 
 class Entity
@@ -13,6 +12,7 @@ class Entity
 
     
 public:
+    Entity() = default;
     void InitializeEntity();
     void AddComponent(Components component);
     virtual std::string GetClass();

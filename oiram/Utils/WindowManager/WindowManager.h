@@ -1,10 +1,9 @@
 ﻿#pragma once
-#include "../../Engine.h"
+#define NOMINMAX
 #include <windows.h>
 #include <list>
-
-#include "../../Objects/GameObject.h"
-#include "../../Objects/Entities/Components/Renderer/Renderer.h"
+#include "../../Engine.h"
+class Renderer;
 
 
 class WindowManager
@@ -13,5 +12,5 @@ private:
     std::list<Renderer*> objectToDraw;
 public:
     void WindowDraw();
-    void AddNewObject(Renderer object);
+    void AddNewObject(Renderer* object);
 };

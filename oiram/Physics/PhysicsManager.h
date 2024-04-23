@@ -1,7 +1,7 @@
 #pragma once
 #include "../Engine.h"
 
-class ApplyPhysics : public Engine
+class ApplyPhysics
 {
 private:
     sf::Vector2f movement;

@@ -1,5 +1,4 @@
 ﻿#include "WindowManager.h"
-
 #include "../../Objects/Entities/Components/Renderer/Renderer.h"
 
 std::list<Renderer*> objectToDraw;
@@ -25,8 +24,8 @@ void WindowManager::WindowDraw()
 
 }
 
-void WindowManager::AddNewObject(Renderer object)
+void WindowManager::AddNewObject(Renderer* object)
 {
-    objectToDraw.push_back(&object);
+    objectToDraw.push_back(object);
     
 }

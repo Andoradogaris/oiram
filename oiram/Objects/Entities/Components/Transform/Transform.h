@@ -1,5 +1,6 @@
 #pragma once
-#include <SFML/System/Vector2.hpp>
+
+#include "../../../../Maths/Vector2.h"
 #include "../Components.h"
 
 
