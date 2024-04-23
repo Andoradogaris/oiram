@@ -1,11 +1,14 @@
 #include "Rigidbody.h"
 
-sf::Vector2f Rigidbody::Gravity(float multiplier)
+Vector2<float> Rigidbody::Gravity(float multiplier)
 {
-    return {0.f, gravityScale * multiplier};
+    if(useGravity)
+    {
+        return {0.f, gravityScale * multiplier};   
+    }
 }
 
-sf::Vector2f Rigidbody::Move(Vector2<float> positions)
+Vector2<float> Rigidbody::Move(Vector2<float> positions)
 {
     return {positions.x, positions.y};
 }

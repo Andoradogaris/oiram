@@ -8,7 +8,9 @@ private:
     const float gravityScale = 0.1f;
     
     public :
-        sf::Vector2f Gravity(float multiplier = 1.f);
-        sf::Vector2f Move(Vector2<float> positions);
+        bool useGravity = false;
+        float velocity = 1.f;
+        Vector2<float> Gravity(float multiplier = 1.f);
+        Vector2<float> Move(Vector2<float> positions);
 };
 
