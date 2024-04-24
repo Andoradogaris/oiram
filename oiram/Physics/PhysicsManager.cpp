@@ -11,8 +11,8 @@ void ApplyPhysics::CreatePhysics(sf::CircleShape& shape, const Vector2<float>& f
     movement += rb.Gravity();
     movement += rb.Move(force);
     
-    shape.move(movement);
+    //shape.move(movement);
     //std::cout << movement.x << movement.y << std::endl;
 
-    movement = sf::Vector2f(0.f, 0.f);
+    //movement = sf::Vector2f(0.f, 0.f);
 }

@@ -1,73 +1,42 @@
 // oiram.cpp : Ce fichier contient la fonction 'main'. L'exécution du programme commence et se termine à cet endroit.
 //
-
-#include <iostream>
-#include <list>
-
 #include "Engine.h"
-#include "Physics/PhysicsManager.h"
-#include "Physics/Collision/Collision.h"
-#include <windows.h>
+#include <iostream>
 
-#include "Objects/GameObject.h"
-
-sf::CircleShape Player(50.f);
-sf::RectangleShape rectangle(sf::Vector2f(100.f, 100.f));
-sf::RectangleShape rectangle2(sf::Vector2f(100.f, 100.f));
-Vector2<float> testImpulseForce(.001f, 0.f);
-
-
+Vector2<float> A;
+Vector2<float> B;
+Vector2<float> C = Vector2(0.f);
 
 
 int main()
 {
     sf::Clock clock;
-    rectangle.setPosition(sf::Vector2f(0.f, 300.f));
-    rectangle2.setPosition(sf::Vector2f(100.f, 500.f));
-    sf::FloatRect playerCol;
-    std::list<sf::FloatRect> platformsCols;
-    Collision collision;
-    ApplyPhysics applyPhysics;
+    A = Vector2(1.f, 1.f);
+    B = Vector2(1.f, -1.f);
 
-    sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
+    A.ReflectVector(Vertical);
+    
+    std::cout << A.x << A.y;
 
-    while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-
-        playerCol = Player.getGlobalBounds();
-        platformsCols.push_back(rectangle.getGlobalBounds());
-        platformsCols.push_back(rectangle2.getGlobalBounds());
-        clock.restart();
-
-        float deltaTime = clock.restart().asSeconds();
-        
-        if (!collision.checkCollision(playerCol, platformsCols))
-        {
-            applyPhysics.CreatePhysics(Player, testImpulseForce * deltaTime);
-        }
-        else {
-            Player.move(0.05f, 0.f);
-        }
-
-        Player.setFillColor(sf::Color(100, 250, 50));
-
-        // clear the window with black color
-        window.clear(sf::Color::Black);
-
-        // draw everything here...
-        // window.draw(...);
-        window.draw(Player);
-        window.draw(rectangle);
-        window.draw(rectangle2);
-
-        window.display();
-    }
+    // sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
+    //
+    // while (window.isOpen())
+    // {
+    //     sf::Event event;
+    //     while (window.pollEvent(event))
+    //     {
+    //         if (event.type == sf::Event::Closed)
+    //             window.close();
+    //     }
+    //     clock.restart();
+    //
+    //     float deltaTime = clock.restart().asSeconds();
+    //     
+    //     window.clear(sf::Color::Black);
+    //     
+    //
+    //     window.display();
+    // }
 
     return 0;
 }

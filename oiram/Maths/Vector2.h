@@ -2,6 +2,11 @@
 
 #include "../Engine.h"
 
+enum Plan {
+    Horizontal,
+    Vertical
+};
+
 template<typename T>
 struct Vector2
 {
@@ -32,7 +37,7 @@ struct Vector2
 
     Vector2 operator-(const T& other) const
     {
-        return *this + Vector2(other);
+        return *this - Vector2(other);
     }
 
     Vector2 operator*(const Vector2& other) const
@@ -45,7 +50,7 @@ struct Vector2
 
     Vector2 operator*(const T& other) const
     {
-        return *this + Vector2(other);
+        return *this * Vector2(other);
     }
 
     Vector2 operator/(const Vector2& other) const
@@ -58,7 +63,25 @@ struct Vector2
     
     Vector2 operator/(const T& other) const
     {
-        return *this + Vector2(other);
+        return *this / Vector2(other);
+    }
+    
+    void operator+=(const Vector2& other)
+    {
+        x = x + other.x;
+        y = y + other.y;
+    }
+
+    void operator-=(const Vector2& other)
+    {
+        x = x - other.x;
+        y = y - other.y;
+    }
+    
+    void operator*=(const Vector2& other)
+    {
+        x = x * other.x;
+        y = y * other.y;
     }
 
     bool operator==(const Vector2& other) const
@@ -71,7 +94,7 @@ struct Vector2
         return !(*this == other);
     }
 
-    float Length()
+    float Length() const
     {
         return std::sqrt(std::pow(x, 2) + std::pow(y, 2));
     }
@@ -86,7 +109,7 @@ struct Vector2
         }
     }
 
-    float Dot(const Vector2& other)
+    float Dot(const Vector2& other) const
     {
         return x * other.x + y * other.y;
     }
@@ -96,25 +119,27 @@ struct Vector2
         return A.Dot(B);
     }
 
-    float GetAngle(const Vector2& other)
+    float GetAngle(Vector2& other)
     {
-        float num = *this.Dot(other);
-        float den = *this->Normalize() * other.Normalize();
-
-        return std::acos(num / den);
+        Normalize();
+        other.Normalize();
+        float cosinus = Dot(*this, other);
+        float angle = std::acos(cosinus) * 180.f / 3.1415f;
+        
+        return (angle);
     }
 
     static float GetAngle(const Vector2& A, const Vector2& B)
     {
-
         return A.GetAngle(B);
     }
 
     bool isColinear(const Vector2& other)
     {
-        return *this->Dot(other) == *this->Normalize() * other.Normalize() || *this->Dot(other) == - *this->Normalize() * other.Normalize();
+        float cosAngle = Dot(other) / (Length() * other.Length());
+        return fabs(cosAngle - 1.0f) < 0.0001f;
     }
-
+    
     static bool isColinear(const Vector2& A, const Vector2& B)
     {
         return A.isColinear(B);
@@ -122,7 +147,7 @@ struct Vector2
 
     bool isOrtho(const Vector2& other)
     {
-        if(*this->Dot(other) == 0)
+        if(this->Dot(other) == 0.f)
         {
             return true;
         }
@@ -134,7 +159,24 @@ struct Vector2
         return A.isOrtho(B);
     }
 
-public :
-    T x;
-    T y;
+    void Negate()
+    {
+        *this *= Vector2(-1.f);
+    }
+
+    void ReflectVector(Plan plan)
+    {
+        if(plan == Horizontal)
+        {
+            y *= -1; 
+        }
+        else
+        {
+            x *= -1;
+        }
+    }
+
+    public :
+        T x;
+        T y;
 };
