@@ -3,6 +3,7 @@
 #include "BaseObject.h"
 #include <iostream>
 
+#include "Utils/ObjectManager/ObjectManager.h"
 #include "Utils/WindowManager/WindowManager.h"
 
 Vector2<float> A;
@@ -19,9 +20,13 @@ int main()
     A.ReflectVector(Vertical);
     
     std::cout << A.x << A.y;
-
-    WindowManager window_manager;
-    window_manager.WindowDraw();
+    
+    ObjectManager* objectManager = ObjectManager::Get();
+    WindowManager* windowManager = objectManager->CastCreateObject<WindowManager>("WindowManager");
+    windowManager->WindowDraw();
+    
+    // WindowManager window_manager;
+    // window_manager.WindowDraw();
     
     // sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
     //

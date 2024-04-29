@@ -4,6 +4,7 @@
 #include "../../Objects/Entities/Components/Renderer/Renderer.h"
 #include "../../Objects/Entities/Characters/Player/Player.h"
 #include "../EventManager/EventManager.h"
+#include "../ObjectManager/ObjectManager.h"
 
 std::list<GameObject> objectToDraw;
 
@@ -14,16 +15,16 @@ void WindowManager::WindowDraw()
     GetWindowRect(GetDesktopWindow(), &desktop);
     int horizontal = desktop.right;
     int vertical = desktop.bottom;
-    Player player;
-    player.InitializeEntity();
-    Cast<Renderer>(player.components.at("rend"))->SetTexture(player);
-    AddNewObject(Cast<Renderer>(player.components.at("rend")));
+    Player* player = ObjectManager::Get()->CastCreateObject<Player>("Player");
+    player->InitializeEntity();
+    Cast<Renderer>(player->components.at("rend"))->SetTexture(player);
+    AddNewObject(Cast<Renderer>(player->components.at("rend")));
     sf::RenderWindow window(sf::VideoMode(horizontal, vertical), "My window");
-    EventManager eventManager;
-    eventManager.SetWindowRef(&window);
+    EventManager* eventManager = ObjectManager::Get()->CastCreateObject<EventManager>("EventManager");
+    eventManager->SetWindowRef(&window);
     while (window.isOpen())
     {
-        eventManager.ListenEvent();
+        eventManager->ListenEvent();
         window.clear(sf::Color::Black);
         
         for (auto obj : objectToDraw)

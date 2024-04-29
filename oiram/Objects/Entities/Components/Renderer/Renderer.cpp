@@ -17,10 +17,10 @@ Renderer::Renderer()
     };
 }
 
-void Renderer::SetTexture(Entity& entity)
+void Renderer::SetTexture(Entity* entity)
 {
     auto Path = std::filesystem::current_path().parent_path().parent_path().string();
-    if(!texture.loadFromFile(Path.append(spriteMap.at( entity.GetClass()))))
+    if(!texture.loadFromFile(Path.append(spriteMap.at( entity->GetClass()))))
     {
         std::cout << Path << std::endl;
     }
