@@ -1,7 +1,7 @@
 #include "Entity.h"
 
 
-
+#include "../../Utils/ObjectManager/ObjectManager.h"
 #include "Components/Renderer/Renderer.h"
 #include "Components/Transform/Transform.h"
 
@@ -24,7 +24,7 @@ std::string Entity::GetClass()
 void Entity::InitializeEntity()
 {
 
-    AddComponent("transf", new Transform());
-    AddComponent("rend",new Renderer());
+    AddComponent("transf", ObjectManager::Get()->CastCreateObject<Transform>("Transform"));
+    AddComponent("rend",ObjectManager::Get()->CastCreateObject<Renderer>("Renderer"));
 
 }
