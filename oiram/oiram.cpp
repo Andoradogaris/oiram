@@ -3,40 +3,40 @@
 #include "Engine.h"
 #include <iostream>
 
-Vector2<float> A;
-Vector2<float> B;
-Vector2<float> C = Vector2(0.f);
-
+#include "Physics/Rigidbody/Rigidbody.h"
 
 int main()
 {
-    sf::Clock clock;
-    A = Vector2(1.f, 1.f);
-    B = Vector2(1.f, -1.f);
+    sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
 
-    A.ReflectVector(Vertical);
+    Engine engine;
+    Rigidbody rb;
     
-    std::cout << A.x << A.y;
+        while (window.isOpen())
+        {
+            sf::Event event;
+            while (window.pollEvent(event))
+            {
+                if (event.type == sf::Event::Closed)
+                    window.close();
+            }
 
-    // sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
-    //
-    // while (window.isOpen())
-    // {
-    //     sf::Event event;
-    //     while (window.pollEvent(event))
-    //     {
-    //         if (event.type == sf::Event::Closed)
-    //             window.close();
-    //     }
-    //     clock.restart();
-    //
-    //     float deltaTime = clock.restart().asSeconds();
-    //     
-    //     window.clear(sf::Color::Black);
-    //     
-    //
-    //     window.display();
-    // }
+            //std::cout << engine.clock.getElapsedTime().asSeconds() << "\n";        
+            
+            //rb.AddForce(Vector2<float>(.2f, .2f), Impulse);
+            
+            rb.useGravity = true;
+            rb.Gravity(.1f);
+            
+            std::cout << rb.velocity.x << " | " << rb.velocity.y << "\n";
+            
+            
+            window.clear(sf::Color::Black);
+            
+        
+            window.display();
+            engine.clock.restart();
+        }
 
     return 0;
 }

@@ -1,21 +1,40 @@
 #include "Rigidbody.h"
 
-Vector2<float> Rigidbody::Gravity(float multiplier)
+Engine engine;
+
+void Rigidbody::Gravity(float multiplier)
 {
     if(useGravity)
-    {
-        return {0.f, gravityScale * multiplier};   
+    {        
+        velocity.y -= mass * gravityScale * multiplier;
     }
 }
 
-Vector2<float> Rigidbody::Move(Vector2<float> positions)
-{
-    return {positions.x, positions.y};
-}
-
-void Rigidbody::AddForce(const Vector2<float> force)
-{
-    Vector2<float> acceleration = force / mass;
-
-    velocity += acceleration;
+void Rigidbody::AddForce(const Vector2<float> force, ForceMode mode)
+{    
+    switch(mode)
+    {
+        case Constant:
+            velocity.x += force.x;
+            velocity.y += force.y;
+            break;
+        // case Impulse:
+        //         timer += engine.deltaTime;
+        //         velocity.x += force.x / timer;
+        //         velocity.y += force.y / timer;
+        //     break;
+        // case Explosive:
+        //     
+        //     std::random_device rd;
+        //     std::mt19937 gen(rd());
+        //
+        //     float length = force.Length();
+        //
+        //     std::uniform_real_distribution<float> distribution(0, length);
+        //     float rdm = distribution(gen);
+        //
+        //     Vector2 explosionForce(rdm, length - rdm);
+        //
+        //     break;
+    }
 }
