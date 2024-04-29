@@ -13,7 +13,6 @@ void EventManager::ListenEvent()
     {
         if (event.type == sf::Event::Closed )
         {
-            std::cout << "test" << std::endl;
             windowscreen->close();
         }
         else if (event.type == sf::Event::KeyPressed)
