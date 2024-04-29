@@ -17,5 +17,5 @@ public:
 
     sf::Texture texture;
     sf::Sprite sprite;
-    void SetTexture(Entity& entity);
+    void SetTexture(Entity* entity);
 };

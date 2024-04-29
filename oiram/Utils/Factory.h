@@ -1,13 +1,69 @@
 #pragma once
-#include "../BaseObject.h"
+#include <unordered_map>
 
-class Factory: public BaseObject
+#include "WindowManager/WindowManager.h"
+
+class BaseObject;
+
+template<class BaseClass = BaseObject>
+class Creator
 {
-    std::string GetClass() override;
+public:
+    virtual ~Creator(){}
+    virtual BaseClass* Create() = 0;
 };
 
-inline std::string Factory::GetClass()
+template<class BaseClass = BaseObject, class DerivedClass = BaseObject>
+class DerivedCreator : public Creator<BaseClass>
 {
-    return "Factory";
-}
+    BaseClass* Create() override
+    {
+        BaseClass* object = new DerivedClass();
+        return object;
+    }
+};
+
+template<class BaseClass = BaseObject>
+class Factory
+{
+public:
+    Factory() = default;
+    ~Factory()
+    {
+        Clear();
+    }
+
+    void RegisterNewCreator(std::string classId, Creator<BaseClass>* creatorClass)
+    {
+        if(!factoryConstructor.contains(classId))
+        {
+            factoryConstructor.insert(std::make_pair(classId, creatorClass));
+        }
+    }
+
+    bool IsAlreadyRegistered(std::string classId)
+    {
+        return factoryConstructor.contains(classId);
+    }
+    
+    BaseClass* CreateClass(std::string classId)
+    {
+        BaseClass* object = nullptr;
+        if(factoryConstructor.contains(classId))
+        {
+            object = factoryConstructor.at(classId)->Create();
+        }
+        return object;
+    }
+    
+    void Clear()
+    {
+        factoryConstructor.clear();
+    }
+
+    std::unordered_map<std::string,Creator<BaseClass>*> factoryConstructor;
+};
+
+
+
 
