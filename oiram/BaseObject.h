@@ -4,10 +4,11 @@
 #include "Maths/Vector2.h"
 #include <random>
 
-class Engine
+class BaseObject
 {
 
 public:
     sf::Clock clock;
     float deltaTime = clock.getElapsedTime().asSeconds();
+    virtual std::string GetClass();
 };

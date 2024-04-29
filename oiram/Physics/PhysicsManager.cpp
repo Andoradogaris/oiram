@@ -4,6 +4,11 @@
 
 #include "Rigidbody/Rigidbody.h"
 
+std::string ApplyPhysics::GetClass()
+{
+    return "ApplyPhysics";
+}
+
 void ApplyPhysics::CreatePhysics(sf::CircleShape& shape, const Vector2<float>& force)
 {
     Rigidbody rb;

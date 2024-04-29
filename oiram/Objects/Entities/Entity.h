@@ -1,17 +1,22 @@
 #pragma once
 
-#include <list>
 
-#include "../../Engine.h"
+#include <unordered_map>
+
+#include "../GameObject.h"
+#include "../../BaseObject.h"
 #include "Components/Components.h"
 
 
-class Entity
+class Entity : public GameObject
 {
 private:
-    std::list<Components> components;
+
 public:
     void InitializeEntity();
-    void AddComponent(Components component);
-    virtual std::string GetClass();
+    void AddComponent(const std::string& ComponentID, Components* component);
+    std::string GetClass() override;
+    std::unordered_map<std::string, Components*> components;
+
+
 };

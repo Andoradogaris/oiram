@@ -1,23 +1,34 @@
 ﻿#include "WindowManager.h"
 
+#include "../TemplateUtils.h"
 #include "../../Objects/Entities/Components/Renderer/Renderer.h"
+#include "../../Objects/Entities/Characters/Player/Player.h"
+#include "../EventManager/EventManager.h"
 
 std::list<GameObject> objectToDraw;
 
 void WindowManager::WindowDraw()
 {
+
     RECT desktop;
     GetWindowRect(GetDesktopWindow(), &desktop);
     int horizontal = desktop.right;
     int vertical = desktop.bottom;
-
+    Player player;
+    player.InitializeEntity();
+    Cast<Renderer>(player.components.at("rend"))->SetTexture(player);
+    AddNewObject(Cast<Renderer>(player.components.at("rend")));
     sf::RenderWindow window(sf::VideoMode(horizontal, vertical), "My window");
+    EventManager eventManager;
+    eventManager.SetWindowRef(&window);
     while (window.isOpen())
     {
+        eventManager.ListenEvent();
         window.clear(sf::Color::Black);
-        for (GameObject obj : objectToDraw)
+        
+        for (auto obj : objectToDraw)
         {
-            // window.draw(obj);
+            window.draw(obj->sprite);
         }
 
         window.display();
@@ -25,7 +36,12 @@ void WindowManager::WindowDraw()
 
 }
 
-void WindowManager::AddNewObject(GameObject object)
+std::string WindowManager::GetClass()
+{
+    return "WindowManager";
+}
+
+void WindowManager::AddNewObject(Renderer* object)
 {
     objectToDraw.push_back(object);
     

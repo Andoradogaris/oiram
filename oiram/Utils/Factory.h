@@ -1,7 +1,13 @@
 #pragma once
-#include "../Engine.h"
+#include "../BaseObject.h"
 
-class Factory:Engine
+class Factory: public BaseObject
 {
+    std::string GetClass() override;
 };
+
+inline std::string Factory::GetClass()
+{
+    return "Factory";
+}
 

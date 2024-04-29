@@ -1,5 +1,7 @@
 #pragma once
 
+#include "../BaseObject.h"
+
 enum Plan {
     Horizontal,
     Vertical

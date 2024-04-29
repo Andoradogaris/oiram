@@ -1,10 +1,11 @@
 #pragma once
-#include "../Engine.h"
+#include "../BaseObject.h"
 
-class ApplyPhysics : public Engine
+class ApplyPhysics : public BaseObject
 {
 private:
-    Vector2<float> movement;
 public:
+    Vector2<float> movement;
+    std::string GetClass() override;
     void CreatePhysics(sf::CircleShape& shape, const Vector2<float>& force);
 };

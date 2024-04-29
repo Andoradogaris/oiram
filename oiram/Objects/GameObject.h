@@ -1,8 +1,9 @@
 #pragma once
-#include "../Engine.h"
+#include "../BaseObject.h"
 
-class GameObject
+class GameObject : public  BaseObject
 {
-private:
+public:
+    std::string GetClass() override;
     std::string name;
 };
