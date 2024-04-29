@@ -4,5 +4,5 @@
 class Platform : Entity
 {
 public:
-    
+    std::string GetClass() override;
 };

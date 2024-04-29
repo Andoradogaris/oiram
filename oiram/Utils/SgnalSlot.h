@@ -1,7 +1,9 @@
 #pragma once
-#include "../Engine.h"
+#include "../BaseObject.h"
 
-class SgnalSlot :Engine
+class SgnalSlot : public BaseObject
 {
+public:
+    std::string GetClass() override;
 };
 

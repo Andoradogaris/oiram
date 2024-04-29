@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "../Components.h"
-#include "../../../../Engine.h"
+#include "../../../../BaseObject.h"
 #include <map>
 
 #include "../../Entity.h"
@@ -9,10 +9,12 @@
 
 class Renderer : public Components
 {
-private:
-    std::map<std::string, std::string> spriteMap;
 public:
-    
+    std::string GetClass() override;
+
+    Renderer();
+    std::map<std::string, std::string> spriteMap;
+
     sf::Texture texture;
     sf::Sprite sprite;
     void SetTexture(Entity& entity);

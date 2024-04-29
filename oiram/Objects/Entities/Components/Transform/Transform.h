@@ -6,6 +6,7 @@
 class Transform : public Components
 {
 public:
+    std::string GetClass() override;
     Vector2<float> position;
     Vector2<float> rotation;
     Vector2<float> scale;

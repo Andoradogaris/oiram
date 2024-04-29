@@ -1,5 +1,10 @@
 ﻿#include "EventManager.h"
 
+std::string EventManager::GetClass()
+{
+    return "EventManager";
+}
+
 void EventManager::SetWindowRef(sf::RenderWindow* wind)
 {
     windowscreen = wind;

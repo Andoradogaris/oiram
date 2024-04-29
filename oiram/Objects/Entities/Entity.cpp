@@ -1,26 +1,30 @@
 #include "Entity.h"
 
+
+
+#include "Components/Renderer/Renderer.h"
 #include "Components/Transform/Transform.h"
 
-<<<<<<< Updated upstream
-=======
-
-// void Entity::AddComponent(std::map<std::string, Components> component)
-// {
-//     // components.push_back(component);
-// }
-
->>>>>>> Stashed changes
-void Entity::AddComponent(Components component)
-{
-    components.push_back(component);
+void Entity::AddComponent(const std::string& componentID, Components* component){
+    if(!components.contains(componentID))
+    {
+        components.insert(std::pair(componentID, component));
+    }else
+    {
+        components[componentID] = component;
+    }
 }
+
+std::string Entity::GetClass()
+{
+    return "Entity";
+}
+
 
 void Entity::InitializeEntity()
 {
-    // std::map<std::string, Components> transform = {"transf",Transform()};
-    // AddComponent(transform);
-    // AddComponent({"rend",Renderer()});
-    AddComponent(Transform());
-    //AddComponent(Renderer());
+
+    AddComponent("transf", new Transform());
+    AddComponent("rend",new Renderer());
+
 }

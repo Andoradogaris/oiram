@@ -1,5 +1,5 @@
 #pragma once
-#include "../../Engine.h"
+#include "../../BaseObject.h"
 #include "../../Objects/Entities/Components/Components.h"
 
 class Rigidbody: public Components

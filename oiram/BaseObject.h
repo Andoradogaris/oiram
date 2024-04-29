@@ -3,9 +3,9 @@
 #include <iostream>
 #include "Maths/Vector2.h"
 
-class Engine
+class BaseObject
 {
 
 public:
-    
+    virtual std::string GetClass();
 };

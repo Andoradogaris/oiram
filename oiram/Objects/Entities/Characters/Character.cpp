@@ -2,7 +2,12 @@
 
 #include "../../../Physics/Rigidbody/Rigidbody.h"
 
+std::string Character::GetClass()
+{
+    return "Character";
+}
+
 void Character::InitCharacterComponents()
 {
-    AddComponent(Rigidbody());
+    AddComponent("rigid",new Rigidbody());
 }

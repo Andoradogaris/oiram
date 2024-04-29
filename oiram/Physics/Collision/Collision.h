@@ -3,9 +3,10 @@
 
 #include "../../Objects/Entities/Components/Components.h"
 
-class Collision : Components
+class Collision : public Components
 {
 public :
+    std::string GetClass() override;
     bool checkCollision(sf::FloatRect playerCol, std::list<sf::FloatRect> collidersToCheck);
 };
 

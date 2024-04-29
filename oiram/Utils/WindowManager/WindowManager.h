@@ -1,15 +1,15 @@
 ﻿#pragma once
-#include "../../Engine.h"
+#define NOMINMAX
 #include <windows.h>
 #include <list>
 
-#include "../../Objects/GameObject.h"
+#include "../../Objects/Entities/Components/Renderer/Renderer.h"
 
-class WindowManager
+class WindowManager : public BaseObject
 {
-private:
-    std::list<GameObject> objectToDraw;
 public:
+    std::list<Renderer*> objectToDraw;
     void WindowDraw();
-    void AddNewObject(GameObject object);
+    std::string GetClass() override;
+    void AddNewObject(Renderer* object);
 };
