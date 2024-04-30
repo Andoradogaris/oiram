@@ -10,7 +10,8 @@ std::string Character::GetClass()
 
 void Character::InitCharacterComponents()
 {
-    AddComponent("rigidbody",ObjectManager::Get()->CastCreateObject<Rigidbody>("Rigidbody"));
+    rb = ObjectManager::Get()->CastCreateObject<Rigidbody>("Rigidbody");
+    AddComponent("rigidbody",rb);
 }
 
 std::string Character::ClassName()

@@ -41,7 +41,6 @@ void WindowManager::WindowDraw()
 
         deltaTime = clock.restart().asSeconds();
         Utils::GetEngine()->deltaTime = deltaTime;
-        std::cout << deltaTime << std::endl;
 
         
         rb->Gravity(deltaTime,1.f);

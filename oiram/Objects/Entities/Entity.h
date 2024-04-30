@@ -5,12 +5,16 @@
 #include "../../BaseObject.h"
 #include "Components/Components.h"
 
+class Transform;
+class Renderer;
 
 class Entity : public GameObject
 {
 private:
 
 public:
+    Transform* transform;
+    Renderer* renderer;
     void InitializeEntity();
     void AddComponent(const std::string& ComponentID, Components* component);
     std::string GetClass() override;
