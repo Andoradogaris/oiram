@@ -13,4 +13,5 @@ public:
     std::string GetClass() override;
     void AddNewObject(Renderer* object);
     static std::string ClassName();
+    
 };

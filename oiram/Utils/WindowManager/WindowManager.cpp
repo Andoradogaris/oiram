@@ -4,7 +4,7 @@
 #include "../../Objects/Entities/Components/Renderer/Renderer.h"
 #include "../../Objects/Entities/Characters/Player/Player.h"
 #include "../../Physics/Rigidbody/Rigidbody.h"
-#include "../EventManager/EventManager.h"
+#include "../InputManager/InputManager.h"
 #include "../ObjectManager/ObjectManager.h"
 
 std::list<GameObject> objectToDraw;
@@ -22,7 +22,7 @@ void WindowManager::WindowDraw()
     Cast<Renderer>(player->components.at("rend"))->SetTexture(player);
     AddNewObject(Cast<Renderer>(player->components.at("rend")));
     sf::RenderWindow window(sf::VideoMode(horizontal, vertical), "My window");
-    EventManager* eventManager = ObjectManager::Get()->CastCreateObject<EventManager>(EventManager::ClassName());
+    InputManager* eventManager = ObjectManager::Get()->CastCreateObject<InputManager>(InputManager::ClassName());
     eventManager->SetWindowRef(&window);
 
     Rigidbody* rb = Cast<Rigidbody>(player->components.at("rigidbody"));

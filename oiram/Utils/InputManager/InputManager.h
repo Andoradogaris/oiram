@@ -1,10 +1,10 @@
 ﻿#pragma once
 #include "../../BaseObject.h"
 
-class EventManager : public BaseObject
+class InputManager : public BaseObject
 {
 public:
-    EventManager() = default;
+    InputManager() = default;
     sf::RenderWindow* windowscreen;
     std::string GetClass() override;
     void SetWindowRef(sf::RenderWindow* wind);

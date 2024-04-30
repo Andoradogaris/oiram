@@ -1,16 +1,16 @@
-﻿#include "EventManager.h"
+﻿#include "InputManager.h"
 
-std::string EventManager::GetClass()
+std::string InputManager::GetClass()
 {
     return "EventManager";
 }
 
-void EventManager::SetWindowRef(sf::RenderWindow* wind)
+void InputManager::SetWindowRef(sf::RenderWindow* wind)
 {
     windowscreen = wind;
 }
 
-void EventManager::ListenEvent()
+void InputManager::ListenEvent()
 {
 
     sf::Event event;
@@ -32,7 +32,7 @@ void EventManager::ListenEvent()
     
 }
 
-std::string EventManager::ClassName()
+std::string InputManager::ClassName()
 {
     return "EventManager";
 }
