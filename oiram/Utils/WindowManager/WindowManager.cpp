@@ -29,7 +29,7 @@ void WindowManager::WindowDraw()
 
     rend->sprite.move(500, 500);
     
-    rb->AddForce(Vector2(60.f, 0.f), Explosive);
+    rb->AddForce(Vector2(0.f, 60.f), Impulse);
 
     rb->useGravity = true;
     
