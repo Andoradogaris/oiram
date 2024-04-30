@@ -1,10 +1,12 @@
 #pragma once
 #include "../Character.h"
-#include "../../../GameObject.h"
+#include "../../../../Utils/TemplateUtils.h"
+
 
 class Player : public Character
 {
 public:
+    float speed = 5.f;
     float jumpValue = 30.f;
     float moveX;
     float moveY;

@@ -17,14 +17,16 @@ std::string Player::ClassName()
 
 void Player::Jump()
 {
-    Rigidbody* rb = Cast<Rigidbody>(components.at("rigidbody"));
-    rb->AddForce(Vector2<float>(moveX, jumpValue), Impulse, Utils::GetEngine()->deltaTime);
+    rb->velocity = Vector2<float>(0,0);
+    rb->AddForce(Vector2<float>(-moveX, jumpValue), Impulse, Utils::GetEngine()->deltaTime);
+    
 }
 
 void Player::Move(float horizontal, float verticale)
 {
-    moveX = horizontal;
-    moveY = verticale;
+    moveX = horizontal * speed;
+    moveY = verticale * speed;
+    rb->AddForce(Vector2<float>(moveX, 0), Constant, Utils::GetEngine()->deltaTime);
 }
 
 void Player::ResetMove()
