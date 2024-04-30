@@ -3,6 +3,7 @@
 #include "BaseObject.h"
 #include <iostream>
 
+#include "Physics/Rigidbody/Rigidbody.h"
 #include "Utils/ObjectManager/ObjectManager.h"
 #include "Utils/WindowManager/WindowManager.h"
 
@@ -13,40 +14,58 @@ Vector2<float> C = Vector2(0.f);
 
 int main()
 {
-    sf::Clock clock;
-    A = Vector2(1.f, 1.f);
-    B = Vector2(1.f, -1.f);
+    sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
 
-    A.ReflectVector(Vertical);
+    Engine engine;
+    Rigidbody rb;
     
-    std::cout << A.x << A.y;
+        while (window.isOpen())
+        {
+            sf::Event event;
+            while (window.pollEvent(event))
+            {
+                if (event.type == sf::Event::Closed)
+                    window.close();
+            }
+            //std::cout << engine.clock.getElapsedTime().asSeconds() << "\n";        
+            
+            //rb.AddForce(Vector2<float>(.2f, .2f), Impulse);
+            
+            rb.useGravity = true;
+            rb.Gravity(.1f);
+            
+            std::cout << rb.velocity.x << " | " << rb.velocity.y << "\n";
+            
+            
+            window.clear(sf::Color::Black);
+            
+        
+            window.display();
+            engine.clock.restart();
+
+            WindowManager window_manager;
+            window_manager.WindowDraw();
     
-    ObjectManager* objectManager = ObjectManager::Get();
-    WindowManager* windowManager = objectManager->CastCreateObject<WindowManager>("WindowManager");
-    windowManager->WindowDraw();
-    
-    // WindowManager window_manager;
-    // window_manager.WindowDraw();
-    
-    // sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
-    //
-    // while (window.isOpen())
-    // {
-    //     sf::Event event;
-    //     while (window.pollEvent(event))
-    //     {
-    //         if (event.type == sf::Event::Closed)
-    //             window.close();
-    //     }
-    //     clock.restart();
-    //
-    //     float deltaTime = clock.restart().asSeconds();
-    //     
-    //     window.clear(sf::Color::Black);
-    //     
-    //
-    //     window.display();
-    // }
+            // sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
+            //
+            // while (window.isOpen())
+            // {
+            //     sf::Event event;
+            //     while (window.pollEvent(event))
+            //     {
+            //         if (event.type == sf::Event::Closed)
+            //             window.close();
+            //     }
+            //     clock.restart();
+            //
+            //     float deltaTime = clock.restart().asSeconds();
+            //     
+            //     window.clear(sf::Color::Black);
+            //     
+            //
+            //     window.display();
+            // }
+        }
 
     return 0;
 }
