@@ -3,6 +3,11 @@
 #include "../WindowManager/WindowManager.h"
 #include "../ObjectManager/ObjectManager.h"
 
+float Engine::GetDeltaTime()
+{
+    return deltaTime;
+}
+
 std::string Engine::ClassName()
 {
     return "Engine";

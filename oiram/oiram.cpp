@@ -3,6 +3,7 @@
 #include "BaseObject.h"
 #include <iostream>
 
+#include "Utils/Utils.h"
 #include "Utils/Engine/Engine.h"
 #include "Utils/ObjectManager/ObjectManager.h"
 
@@ -10,6 +11,7 @@
 int main()
 {
     Engine* engine = ObjectManager::Get()->CastCreateObject<Engine>(Engine::ClassName());
+    Utils::SetEngine(engine);
     engine->StartEngine();
     return 0;
 }
