@@ -22,9 +22,8 @@ void WindowManager::WindowDraw()
     Cast<Renderer>(player->components.at("rend"))->SetTexture(player);
     AddNewObject(Cast<Renderer>(player->components.at("rend")));
     sf::RenderWindow window(sf::VideoMode(horizontal, vertical), "My window");
-    InputManager* eventManager = ObjectManager::Get()->CastCreateObject<InputManager>(InputManager::ClassName());
-    eventManager->SetWindowRef(&window);
-
+    inputManagerGame->SetWindowRef(&window);
+    
     Rigidbody* rb = Cast<Rigidbody>(player->components.at("rigidbody"));
     Renderer* rend = Cast<Renderer>(player->components.at("rend"));
 
@@ -32,7 +31,7 @@ void WindowManager::WindowDraw()
     
     while (window.isOpen())
     {
-        eventManager->ListenEvent();
+        inputManagerGame->ListenEvent();
         window.clear(sf::Color::Black);
 
         rb->Gravity(.1f);

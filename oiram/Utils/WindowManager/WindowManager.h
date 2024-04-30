@@ -4,6 +4,7 @@
 #include <list>
 
 #include "../../Objects/Entities/Components/Renderer/Renderer.h"
+#include "../InputManager/InputManager.h"
 
 class WindowManager : public BaseObject
 {
@@ -13,5 +14,5 @@ public:
     std::string GetClass() override;
     void AddNewObject(Renderer* object);
     static std::string ClassName();
-    
+    InputManager* inputManagerGame;
 };

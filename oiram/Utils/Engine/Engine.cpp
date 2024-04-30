@@ -15,6 +15,8 @@ std::string Engine::GetClass()
 
 void Engine::StartEngine()
 {
-    WindowManager* window_manager = ObjectManager::Get()->CastCreateObject<WindowManager>(WindowManager::ClassName());
-    window_manager->WindowDraw();   
+    WindowManager* windowManager = ObjectManager::Get()->CastCreateObject<WindowManager>(WindowManager::ClassName());
+    InputManager* inputManager = ObjectManager::Get()->CastCreateObject<InputManager>(InputManager::ClassName());
+    windowManager->inputManagerGame = inputManager;
+    windowManager->WindowDraw();
 }
