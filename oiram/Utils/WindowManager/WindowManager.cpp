@@ -36,7 +36,7 @@ void WindowManager::WindowDraw()
         window.clear(sf::Color::Black);
 
         rb->Gravity(.1f);
-        rb->AddForce(Vector2(0.f, -.0001f), Constant);
+        rb->AddForce(Vector2(0.f, -.001f), Constant);
         rend->sprite.move(rb->velocity.x, rb->velocity.y);
         std::cout << rb->velocity.x << " | " << rb->velocity.y << std::endl;
 
