@@ -28,7 +28,9 @@ void WindowManager::WindowDraw()
     Rigidbody* rb = Cast<Rigidbody>(player->components.at("rigidbody"));
     Renderer* rend = Cast<Renderer>(player->components.at("rend"));
 
-    // rb->AddForce(Vector2(0.f, -1.f), Impulse);
+    rend->sprite.move(500, 500);
+    
+    rb->AddForce(Vector2(60.f, 0.f), Explosive);
 
     rb->useGravity = true;
     
@@ -40,11 +42,11 @@ void WindowManager::WindowDraw()
         deltaTime = clock.restart().asSeconds();
         Utils::GetEngine()->deltaTime = deltaTime;
         std::cout << deltaTime << std::endl;
+
         
         rb->Gravity(deltaTime,1.f);
         rend->sprite.move(rb->velocity.x * deltaTime, rb->velocity.y * deltaTime);
         
-        std::cout << rend->sprite.getPosition().x << " | " << rend->sprite.getPosition().y << std::endl;
 
         for (auto obj : objectToDraw)
         {
