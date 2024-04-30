@@ -4,6 +4,8 @@
 #include "../TemplateUtils.h"
 #include "../../BaseObject.h"
 
+#include "../Engine/Engine.h"
+
 class ObjectManager: public BaseObject
 {
 private:

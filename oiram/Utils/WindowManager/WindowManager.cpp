@@ -1,6 +1,7 @@
 ﻿#include "WindowManager.h"
 
 #include "../TemplateUtils.h"
+#include "../Utils.h"
 #include "../../Objects/Entities/Components/Renderer/Renderer.h"
 #include "../../Objects/Entities/Characters/Player/Player.h"
 #include "../../Physics/Rigidbody/Rigidbody.h"
@@ -39,6 +40,9 @@ void WindowManager::WindowDraw()
         window.clear(sf::Color::Black);
 
         deltaTime = clock.restart().asSeconds();
+        Utils::GetEngine()->deltaTime = deltaTime;
+        std::cout << deltaTime << std::endl;
+
         
         rb->Gravity(deltaTime,1.f);
         rend->sprite.move(rb->velocity.x * deltaTime, rb->velocity.y * deltaTime);
