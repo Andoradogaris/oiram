@@ -11,3 +11,13 @@ std::string Player::ClassName()
 {
     return "Player";
 }
+
+void Player::Jump()
+{
+    
+}
+
+void Player::Move(float horizontal, float verticale)
+{
+    
+}

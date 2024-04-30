@@ -23,7 +23,7 @@ void WindowManager::WindowDraw()
     AddNewObject(Cast<Renderer>(player->components.at("rend")));
     sf::RenderWindow window(sf::VideoMode(horizontal, vertical), "My window");
     inputManagerGame->SetWindowRef(&window);
-    
+    inputManagerGame->player = player;
     Rigidbody* rb = Cast<Rigidbody>(player->components.at("rigidbody"));
     Renderer* rend = Cast<Renderer>(player->components.at("rend"));
 
