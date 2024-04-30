@@ -16,6 +16,7 @@ public:
 template<class BaseClass = BaseObject, class DerivedClass = BaseObject>
 class DerivedCreator : public Creator<BaseClass>
 {
+public:
     BaseClass* Create() override
     {
         BaseClass* object = new DerivedClass();

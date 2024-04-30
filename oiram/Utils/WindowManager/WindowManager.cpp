@@ -47,3 +47,8 @@ void WindowManager::AddNewObject(Renderer* object)
     objectToDraw.push_back(object);
     
 }
+
+std::string WindowManager::ClassName()
+{
+    return "WindowManager";
+}
