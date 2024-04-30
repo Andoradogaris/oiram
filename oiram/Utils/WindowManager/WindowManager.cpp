@@ -3,6 +3,7 @@
 #include "../TemplateUtils.h"
 #include "../../Objects/Entities/Components/Renderer/Renderer.h"
 #include "../../Objects/Entities/Characters/Player/Player.h"
+#include "../../Physics/Rigidbody/Rigidbody.h"
 #include "../EventManager/EventManager.h"
 #include "../ObjectManager/ObjectManager.h"
 
@@ -17,15 +18,28 @@ void WindowManager::WindowDraw()
     int vertical = desktop.bottom;
     Player* player = ObjectManager::Get()->CastCreateObject<Player>("Player");
     player->InitializeEntity();
+    player->InitCharacterComponents();
     Cast<Renderer>(player->components.at("rend"))->SetTexture(player);
     AddNewObject(Cast<Renderer>(player->components.at("rend")));
     sf::RenderWindow window(sf::VideoMode(horizontal, vertical), "My window");
     EventManager* eventManager = ObjectManager::Get()->CastCreateObject<EventManager>("EventManager");
     eventManager->SetWindowRef(&window);
+
+    Rigidbody* rb = Cast<Rigidbody>(player->components.at("rigidbody"));
+    Renderer* rend = Cast<Renderer>(player->components.at("rend"));
+
+    rb->useGravity = true;
+    
     while (window.isOpen())
     {
         eventManager->ListenEvent();
         window.clear(sf::Color::Black);
+
+        rb->Gravity(.1f);
+        rb->AddForce(Vector2(0.f, -.0001f), Constant);
+        rend->sprite.move(rb->velocity.x, rb->velocity.y);
+        std::cout << rb->velocity.x << " | " << rb->velocity.y << std::endl;
+
         
         for (auto obj : objectToDraw)
         {

@@ -12,6 +12,8 @@ int main()
 
     WindowManager* window_manager = ObjectManager::Get()->CastCreateObject<WindowManager>(WindowManager::ClassName());
     window_manager->WindowDraw();
+
+    
     
     return 0;
 }

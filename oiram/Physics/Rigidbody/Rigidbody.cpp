@@ -5,7 +5,7 @@ void Rigidbody::Gravity(float multiplier)
 {
     if(useGravity)
     {        
-        velocity.y -= mass * gravityScale * multiplier;
+        velocity.y += (mass * gravityScale * multiplier) / 1000;
     }
 }
 
@@ -18,9 +18,8 @@ void Rigidbody::AddForce(const Vector2<float> force, ForceMode mode)
             velocity.y += force.y;
             break;
         // case Impulse:
-        //         timer += engine.deltaTime;
-        //         velocity.x += force.x / timer;
-        //         velocity.y += force.y / timer;
+        //         velocity.x += force.x;
+        //         velocity.y += force.y;
         //     break;
         // case Explosive:
         //     
