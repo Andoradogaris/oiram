@@ -9,6 +9,8 @@
 class WindowManager : public BaseObject
 {
 public:
+    sf::Clock clock;
+    float deltaTime = 0.f;
     std::list<Renderer*> objectToDraw;
     void WindowDraw();
     std::string GetClass() override;

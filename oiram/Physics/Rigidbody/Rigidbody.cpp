@@ -1,26 +1,34 @@
 #include "Rigidbody.h"
 
 
-void Rigidbody::Gravity(float multiplier)
+void Rigidbody::Gravity(float deltaTime, float multiplier)
 {
     if(useGravity)
-    {        
-        velocity.y += (mass * gravityScale * multiplier) / 1000;
+    {
+        AddForce(Vector2<float>(0, gravityScale * multiplier), Constant, deltaTime);
     }
 }
 
-void Rigidbody::AddForce(const Vector2<float> force, ForceMode mode)
-{    
-    switch(mode)
-    {
-        case Constant:
-            velocity.x += force.x;
-            velocity.y += force.y;
-            break;
-        // case Impulse:
-        //         velocity.x += force.x;
-        //         velocity.y += force.y;
-        //     break;
+void Rigidbody::AddForce(const Vector2<float> force, ForceMode mode, float deltaTime)
+{
+    if (mode == Constant){
+        float ForceXToAdd = force.x * deltaTime;
+        float ForceYToAdd = force.y * deltaTime;
+        velocity.x += ForceXToAdd;
+        velocity.y += ForceYToAdd;
+    }
+    else{
+        velocity.x += force.x;
+        velocity.y += force.y;
+    }
+    // switch(mode)
+    // {
+    //     case Constant:
+    //         
+    //         break;
+    //     case Impulse:
+    //             
+    //         break;
         // case Explosive:
         //     
         //     std::random_device rd;
@@ -34,7 +42,7 @@ void Rigidbody::AddForce(const Vector2<float> force, ForceMode mode)
         //     Vector2 explosionForce(rdm, length - rdm);
         //
         //     break;
-    }
+    //}
 }
 
 std::string Rigidbody::ClassName()

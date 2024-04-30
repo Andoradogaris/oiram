@@ -8,8 +8,6 @@ class BaseObject
 {
 
 public:
-    sf::Clock clock;
-    float deltaTime = clock.getElapsedTime().asSeconds();
     virtual std::string GetClass();
     static std::string ClassName();
 };
