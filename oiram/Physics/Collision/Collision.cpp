@@ -1,13 +1,23 @@
 #include "Collision.h"
 
+#include "../../Utils/WindowManager/WindowManager.h"
+
 
 std::string Collision::GetClass()
 {
     return "Collision";
 }
 
-bool Collision::checkCollision(sf::FloatRect playerCol, std::list<sf::FloatRect> collidersToCheck)
+bool Collision::checkCollision(sf::FloatRect playerCol)
 {
+    /*WindowManager* windowManager;
+    std::list<sf::FloatRect> collidersToCheck;
+
+    for (auto item : windowManager->objectToDraw)
+    {
+        collidersToCheck.push_back(item.) 
+    }
+    auto collidersToCheck = windowManager->objectToDraw;
     
     for (const auto& col : collidersToCheck)
     {
@@ -16,7 +26,7 @@ bool Collision::checkCollision(sf::FloatRect playerCol, std::list<sf::FloatRect>
             return true;
         }
     }
-    return false;
+    return false;*/
 }
 
 std::string Collision::ClassName()

@@ -7,7 +7,7 @@ class Collision : public Components
 {
 public :
     std::string GetClass() override;
-    bool checkCollision(sf::FloatRect playerCol, std::list<sf::FloatRect> collidersToCheck);
+    bool checkCollision(sf::FloatRect playerCol);
     static std::string ClassName();
 };
 
