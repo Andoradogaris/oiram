@@ -1,6 +1,5 @@
 #include "Rigidbody.h"
 
-Engine engine;
 
 void Rigidbody::Gravity(float multiplier)
 {
