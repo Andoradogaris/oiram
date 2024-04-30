@@ -8,4 +8,5 @@ class BaseObject
 
 public:
     virtual std::string GetClass();
+    static std::string ClassName();
 };

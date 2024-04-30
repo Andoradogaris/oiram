@@ -25,3 +25,8 @@ std::string ObjectManager::GetClass()
 {
     return "ObjectManager";
 }
+
+std::string ObjectManager::ClassName()
+{
+    return "ObjectManager";
+}
