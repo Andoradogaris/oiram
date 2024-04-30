@@ -7,4 +7,5 @@ public:
     std::string GetClass() override;
 
     void InitCharacterComponents();
+    static std::string ClassName();
 };

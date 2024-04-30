@@ -3,15 +3,13 @@
 #include "BaseObject.h"
 #include <iostream>
 
+#include "Utils/Engine/Engine.h"
 #include "Utils/ObjectManager/ObjectManager.h"
-#include "Utils/WindowManager/WindowManager.h"
 
 
 int main()
 {
-
-    WindowManager* window_manager = ObjectManager::Get()->CastCreateObject<WindowManager>(WindowManager::ClassName());
-    window_manager->WindowDraw();
-    
+    Engine* engine = ObjectManager::Get()->CastCreateObject<Engine>(Engine::ClassName());
+    engine->StartEngine();
     return 0;
 }

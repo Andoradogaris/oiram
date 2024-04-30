@@ -37,3 +37,8 @@ void Rigidbody::AddForce(const Vector2<float> force, ForceMode mode)
         //     break;
     }
 }
+
+std::string Rigidbody::ClassName()
+{
+    return "Rigidbody";
+}

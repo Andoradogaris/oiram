@@ -6,4 +6,5 @@ class GameObject : public  BaseObject
 public:
     std::string GetClass() override;
     std::string name;
+    static std::string ClassName();
 };

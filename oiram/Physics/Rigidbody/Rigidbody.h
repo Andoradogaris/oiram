@@ -22,4 +22,5 @@ public :
     float mass = 80;
     void Gravity(float multiplier = 1.f);
     void AddForce(const Vector2<float> force, ForceMode mode);
+    static std::string ClassName();
 };

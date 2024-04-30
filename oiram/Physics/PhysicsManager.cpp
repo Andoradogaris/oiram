@@ -19,3 +19,8 @@ void ApplyPhysics::CreatePhysics(sf::CircleShape& shape, const Vector2<float>& f
 
     //movement = sf::Vector2f(0.f, 0.f);
 }
+
+std::string ApplyPhysics::ClassName()
+{
+    return "ApplyPhysics";
+}

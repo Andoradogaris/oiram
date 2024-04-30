@@ -15,12 +15,12 @@ void WindowManager::WindowDraw()
     GetWindowRect(GetDesktopWindow(), &desktop);
     int horizontal = desktop.right;
     int vertical = desktop.bottom;
-    Player* player = ObjectManager::Get()->CastCreateObject<Player>("Player");
+    Player* player = ObjectManager::Get()->CastCreateObject<Player>(Player::ClassName());
     player->InitializeEntity();
     Cast<Renderer>(player->components.at("rend"))->SetTexture(player);
     AddNewObject(Cast<Renderer>(player->components.at("rend")));
     sf::RenderWindow window(sf::VideoMode(horizontal, vertical), "My window");
-    EventManager* eventManager = ObjectManager::Get()->CastCreateObject<EventManager>("EventManager");
+    EventManager* eventManager = ObjectManager::Get()->CastCreateObject<EventManager>(EventManager::ClassName());
     eventManager->SetWindowRef(&window);
     while (window.isOpen())
     {

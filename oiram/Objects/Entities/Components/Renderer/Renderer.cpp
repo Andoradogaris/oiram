@@ -27,3 +27,8 @@ void Renderer::SetTexture(Entity* entity)
     sprite.setTexture(texture);
     sprite.setScale(1,1);
 }
+
+std::string Renderer::ClassName()
+{
+    return "Renderer";
+}

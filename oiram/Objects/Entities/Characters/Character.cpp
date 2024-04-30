@@ -12,3 +12,8 @@ void Character::InitCharacterComponents()
 {
     AddComponent("rigid",ObjectManager::Get()->CastCreateObject<Rigidbody>("Rigidbody"));
 }
+
+std::string Character::ClassName()
+{
+    return "Character";
+}

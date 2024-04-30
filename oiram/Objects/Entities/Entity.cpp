@@ -20,6 +20,11 @@ std::string Entity::GetClass()
     return "Entity";
 }
 
+std::string Entity::ClassName()
+{
+    return "Entity";
+}
+
 
 void Entity::InitializeEntity()
 {
