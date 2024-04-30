@@ -10,4 +10,5 @@ public:
     Vector2<float> position;
     Vector2<float> rotation;
     Vector2<float> scale;
+    static std::string ClassName();
 };

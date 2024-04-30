@@ -31,3 +31,8 @@ void EventManager::ListenEvent()
 
     
 }
+
+std::string EventManager::ClassName()
+{
+    return "EventManager";
+}

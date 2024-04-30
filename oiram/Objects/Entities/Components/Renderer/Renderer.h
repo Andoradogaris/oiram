@@ -18,4 +18,5 @@ public:
     sf::Texture texture;
     sf::Sprite sprite;
     void SetTexture(Entity* entity);
+    static std::string ClassName();
 };

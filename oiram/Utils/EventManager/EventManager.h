@@ -9,4 +9,5 @@ public:
     std::string GetClass() override;
     void SetWindowRef(sf::RenderWindow* wind);
     void ListenEvent();
+    static std::string ClassName();
 };

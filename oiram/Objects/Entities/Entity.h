@@ -15,6 +15,6 @@ public:
     void AddComponent(const std::string& ComponentID, Components* component);
     std::string GetClass() override;
     std::unordered_map<std::string, Components*> components;
-
+    static std::string ClassName();
 
 };

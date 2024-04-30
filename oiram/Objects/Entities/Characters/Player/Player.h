@@ -6,4 +6,5 @@ class Player : public Character
 {
 public:
     std::string GetClass() override;
+    static std::string ClassName();
 };

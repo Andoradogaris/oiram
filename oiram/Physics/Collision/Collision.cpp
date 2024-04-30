@@ -18,3 +18,8 @@ bool Collision::checkCollision(sf::FloatRect playerCol, std::list<sf::FloatRect>
     }
     return false;
 }
+
+std::string Collision::ClassName()
+{
+    return "Collision";
+}
