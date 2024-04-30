@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "../../BaseObject.h"
+#include "../../Objects/Entities/Characters/Player/Player.h"
 
 class InputManager : public BaseObject
 {
@@ -10,4 +11,5 @@ public:
     void SetWindowRef(sf::RenderWindow* wind);
     void ListenEvent();
     static std::string ClassName();
+    Player* player;
 };

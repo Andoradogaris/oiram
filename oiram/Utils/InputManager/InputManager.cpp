@@ -27,6 +27,31 @@ void InputManager::ListenEvent()
                 windowscreen->close();
             }
         }
+
+        if(event.type == sf::Event::KeyReleased )
+        {
+            if(event.key.scancode == sf::Keyboard::Scan::Space)
+            {
+                player->Jump();
+            }
+        }
+        
+        if(event.key.scancode == sf::Keyboard::Scan::Right)
+        {
+            player->Move(1.f,0.f);
+        }else if(event.key.scancode == sf::Keyboard::Scan::Left)
+        {
+            player->Move(-1.f,0.f);
+        }
+
+        if(event.key.scancode == sf::Keyboard::Scan::Up)
+        {
+            player->Move(0.f,-1.f);
+        }else if(event.key.scancode == sf::Keyboard::Scan::Down)
+        {
+            player->Move(0.f,1.f);
+        }
+
     }
 
     

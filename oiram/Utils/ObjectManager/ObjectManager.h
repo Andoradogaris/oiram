@@ -23,7 +23,6 @@ public:
         return Cast<T>(object);
     }
     static ObjectManager* Get();
-    WindowManager* CreateWindowManager();
     std::string GetClass() override;
     std::vector<BaseObject*> gameObjectsList;
     static std::string ClassName();
