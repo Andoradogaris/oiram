@@ -16,13 +16,11 @@ void Animator::SetAnimation(const std::string& name) {
 
 void Animator::UpdateAnimation(float deltaTime) {
     if (currentAnimation == -1) {
-        return; // Aucune animation n'est sélectionnée
+        return;
     }
 
     UpdateCurrentFrame(deltaTime);
-
-    // Mettre à jour l'objet avec les données de l'image actuelle
-    // ...
+    
 }
 
 int Animator::FindAnimationIndex(const std::string& name) const {
@@ -35,17 +33,17 @@ int Animator::FindAnimationIndex(const std::string& name) const {
 }
 
 void Animator::UpdateCurrentFrame(float deltaTime) {
-    Animation& currentAnimation = animations[currentAnimation];
+    Animation& _currentAnimation = animations.at(currentAnimation);
 
     currentTime += deltaTime;
 
     // Avancer vers l'image suivante si nécessaire
-    while (currentTime > currentAnimation.frames[currentFrame].getTextureRect().height) {
-        currentTime -= currentAnimation.frames[currentFrame].getTextureRect().height;
+    while (currentTime > _currentAnimation.frames[currentFrame].getTextureRect().height) {
+        currentTime -= _currentAnimation.frames[currentFrame].getTextureRect().height;
         currentFrame++;
 
         // Boucler vers le début si la fin de l'animation est atteinte
-        if (currentFrame >= currentAnimation.frames.size()) {
+        if (currentFrame >= _currentAnimation.frames.size()) {
             currentFrame = 0;
         }
     }
