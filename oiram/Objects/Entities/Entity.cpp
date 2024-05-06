@@ -26,10 +26,14 @@ std::string Entity::ClassName()
 }
 
 
+Entity::Entity()
+{
+    renderer = ObjectManager::Get()->CastCreateObject<Renderer>("Renderer");
+}
+
 void Entity::InitializeEntity()
 {
     transform = ObjectManager::Get()->CastCreateObject<Transform>("Transform");
-    renderer = ObjectManager::Get()->CastCreateObject<Renderer>("Renderer");
     AddComponent("transf", transform);
     AddComponent("rend",renderer);
 

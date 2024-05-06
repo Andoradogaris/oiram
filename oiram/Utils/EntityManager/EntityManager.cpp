@@ -25,17 +25,7 @@ void EntityManager::ActorAction()
     Utils::GetEngine()->deltaTime = deltaTime;
     for (EntityList* entity : entityList)
     {
-        if(entity->name == "Player")
-        {
-            rb = Cast<Rigidbody>(Cast<Player>(entity->entity)->components.at("rigidbody"));
-            rend = Cast<Renderer>(Cast<Player>(entity->entity)->components.at("rend"));
-            rb->Gravity(deltaTime,1.f);
-            rend->sprite.move(rb->velocity.x * deltaTime, rb->velocity.y * deltaTime);
-        }
-        else if (entity->name == "Boomga")
-        {
-            
-        }
+        entity->entity->ApplyMovement(deltaTime);
     }
 }
 
@@ -49,7 +39,7 @@ std::string EntityManager::ClassName()
     return "EntityManager";
 }
 
-void EntityManager::RegisterActor(GameObject* actor, std::string className)
+void EntityManager::RegisterActor(Character* actor, std::string className)
 {
     EntityList* entity = new EntityList(className,actor);
     entityList.push_back(entity);

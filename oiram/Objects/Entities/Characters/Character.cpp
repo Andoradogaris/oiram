@@ -3,6 +3,10 @@
 #include "../../../Physics/Rigidbody/Rigidbody.h"
 #include "../../../Utils/ObjectManager/ObjectManager.h"
 
+void Character::ApplyMovement(float deltaTime)
+{
+}
+
 std::string Character::GetClass()
 {
     return "Character";

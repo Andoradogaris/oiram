@@ -13,6 +13,7 @@ class Entity : public GameObject
 private:
 
 public:
+    Entity();
     Transform* transform;
     Renderer* renderer;
     void InitializeEntity();

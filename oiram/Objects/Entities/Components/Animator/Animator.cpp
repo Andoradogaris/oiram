@@ -48,4 +48,3 @@ void Animator::UpdateCurrentFrame(float deltaTime) {
         }
     }
 }
->>>>>>> 65e8632ec2bc2f5eaa84a71754f9b8985672e550
