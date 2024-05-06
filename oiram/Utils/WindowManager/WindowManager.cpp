@@ -5,6 +5,7 @@
 #include "../../Objects/Entities/Components/Renderer/Renderer.h"
 #include "../../Objects/Entities/Characters/Player/Player.h"
 #include "../../Physics/Rigidbody/Rigidbody.h"
+#include "../EntityManager/EntityManager.h"
 #include "../InputManager/InputManager.h"
 #include "../ObjectManager/ObjectManager.h"
 
@@ -17,35 +18,21 @@ void WindowManager::WindowDraw()
     GetWindowRect(GetDesktopWindow(), &desktop);
     int horizontal = desktop.right;
     int vertical = desktop.bottom;
-    Player* player = ObjectManager::Get()->CastCreateObject<Player>(Player::ClassName());
-    player->InitializeEntity();
-    player->InitCharacterComponents();
-    Cast<Renderer>(player->components.at("rend"))->SetTexture(player);
-    AddNewObject(Cast<Renderer>(player->components.at("rend")));
     sf::RenderWindow window(sf::VideoMode(horizontal, vertical), "My window");
     inputManagerGame->SetWindowRef(&window);
     inputManagerGame->player = player;
-    Rigidbody* rb = Cast<Rigidbody>(player->components.at("rigidbody"));
-    Renderer* rend = Cast<Renderer>(player->components.at("rend"));
 
-    rend->sprite.move(500, 500);
-    
-    rb->AddForce(Vector2(0.f, 60.f), Impulse);
 
-    rb->useGravity = true;
+
     
     while (window.isOpen())
     {
         inputManagerGame->ListenEvent();
+        entityManager->ActorAction();
         window.clear(sf::Color::Black);
 
         deltaTime = clock.restart().asSeconds();
         Utils::GetEngine()->deltaTime = deltaTime;
-
-        
-        rb->Gravity(deltaTime,1.f);
-        rend->sprite.move(rb->velocity.x * deltaTime, rb->velocity.y * deltaTime);
-        
 
         for (auto obj : objectToDraw)
         {
