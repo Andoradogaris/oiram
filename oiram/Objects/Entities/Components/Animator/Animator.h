@@ -18,7 +18,7 @@ struct Animation {
 
 class Animator : public Components {
 public:
-
+    Renderer* rend;
     std::vector<Animation> animations;
     int currentAnimation = -1; // Index de l'animation actuelle, initialisé à -1
     int currentFrame = 0; // Index de l'image actuelle au sein de l'animation
@@ -41,4 +41,7 @@ public:
 private:
     // Fonction privée pour mettre à jour l'image actuelle en fonction du temps écoulé
     void UpdateCurrentFrame(float deltaTime);
+
+    //Fonction privée pour set la frame actuelle comme Sprite de notre objet
+    void SetFrame();
 };

@@ -1,6 +1,11 @@
 #include "Animator.h"
 
-Animator::Animator() {}
+#include "../Renderer/Renderer.h"
+
+Animator::Animator()
+{
+    rend = Cast<Renderer>(GetOwner()->components.at("Renderer"));
+}
 
 void Animator::AddAnimation(const std::string& name) {
     Animation animation;
@@ -32,13 +37,15 @@ int Animator::FindAnimationIndex(const std::string& name) const {
     return -1; // Animation non trouvée
 }
 
-void Animator::UpdateCurrentFrame(float deltaTime) {
+void Animator::UpdateCurrentFrame(float deltaTime)
+{
     Animation& _currentAnimation = animations.at(currentAnimation);
 
     currentTime += deltaTime;
 
     // Avancer vers l'image suivante si nécessaire
-    while (currentTime > _currentAnimation.frames[currentFrame].getTextureRect().height) {
+    while (currentTime > _currentAnimation.frames[currentFrame].getTextureRect().height)
+    {
         currentTime -= _currentAnimation.frames[currentFrame].getTextureRect().height;
         currentFrame++;
 
@@ -47,5 +54,11 @@ void Animator::UpdateCurrentFrame(float deltaTime) {
             currentFrame = 0;
         }
     }
+    //Entity.components.at("Renderer")
+    //SetFrame()
 }
->>>>>>> 65e8632ec2bc2f5eaa84a71754f9b8985672e550
+
+void Animator::SetFrame()
+{
+    rend->sprite.setTexture(*animations.at(currentAnimation).frames.at(currentFrame).getTexture());
+}
