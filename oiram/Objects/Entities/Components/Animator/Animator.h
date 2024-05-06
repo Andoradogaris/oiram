@@ -11,12 +11,13 @@
 #include <vector>
 #include <string>
 
+struct Animation {
+    std::string name;
+    std::vector<sf::Sprite> frames;
+};
+
 class Animator : public Components {
 public:
-    struct Animation {
-        std::string name;
-        std::vector<sf::Sprite> frames;
-    };
 
     std::vector<Animation> animations;
     int currentAnimation = -1; // Index de l'animation actuelle, initialisé à -1
