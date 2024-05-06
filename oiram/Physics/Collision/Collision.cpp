@@ -3,14 +3,6 @@
 #include "../../Utils/WindowManager/WindowManager.h"
 
 
-enum class CollisionDir {
-    Haut,
-    Bas,
-    Gauche,
-    Droite,
-    Aucune
-};
-
 std::string Collision::GetClass()
 {
     return "Collision";
@@ -46,7 +38,7 @@ std::list<CollisionDir> collisionDirection(const sf::FloatRect& objet1, const sf
     float overlapBottom = (objet2.top + objet2.height) - objet1.top;
     
     if (overlapLeft > 0 && overlapRight > 0 && overlapTop > 0 && overlapBottom > 0)
-        {
+    {
         if (overlapLeft < overlapRight && overlapLeft < overlapTop && overlapLeft < overlapBottom)
         {
             result.push_back(CollisionDir::Gauche);
