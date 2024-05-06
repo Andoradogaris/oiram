@@ -36,26 +36,44 @@ bool Collision::checkCollision(sf::FloatRect entityCol)
     return false;
 }
 
-CollisionDir collisionDirection(const sf::FloatRect& objet1, const sf::FloatRect& objet2)
+std::list<CollisionDir> collisionDirection(const sf::FloatRect& objet1, const sf::FloatRect& objet2)
 {
+    std::list <CollisionDir> result;
+    
     float overlapLeft = objet2.left - (objet1.left + objet1.width);
     float overlapRight = (objet2.left + objet2.width) - objet1.left;
     float overlapTop = objet2.top - (objet1.top + objet1.height);
     float overlapBottom = (objet2.top + objet2.height) - objet1.top;
     
-    if (overlapLeft > 0 && overlapRight > 0 && overlapTop > 0 && overlapBottom > 0) {
-        if (overlapLeft < overlapRight && overlapLeft < overlapTop && overlapLeft < overlapBottom) {
-            return CollisionDir::Gauche;
-        } else if (overlapRight < overlapLeft && overlapRight < overlapTop && overlapRight < overlapBottom) {
-            return CollisionDir::Droite;
-        } else if (overlapTop < overlapLeft && overlapTop < overlapRight && overlapTop < overlapBottom) {
-            return CollisionDir::Haut;
-        } else if (overlapBottom < overlapLeft && overlapBottom < overlapRight && overlapBottom < overlapTop) {
-            return CollisionDir::Bas;
+    if (overlapLeft > 0 && overlapRight > 0 && overlapTop > 0 && overlapBottom > 0)
+        {
+        if (overlapLeft < overlapRight && overlapLeft < overlapTop && overlapLeft < overlapBottom)
+        {
+            result.push_back(CollisionDir::Gauche);
+        }
+
+        if (overlapRight < overlapLeft && overlapRight < overlapTop && overlapRight < overlapBottom)
+        {
+            result.push_back(CollisionDir::Droite);
+        }
+
+        if (overlapTop < overlapLeft && overlapTop < overlapRight && overlapTop < overlapBottom)
+        {
+            result.push_back(CollisionDir::Haut);
+        }
+
+        if (overlapBottom < overlapLeft && overlapBottom < overlapRight && overlapBottom < overlapTop)
+        {
+            result.push_back(CollisionDir::Bas);
         }
     }
     
-    return CollisionDir::Aucune;
+    if(result.empty())
+    {
+        result.push_back(CollisionDir::Aucune);
+    }
+    
+    return result;
 }
 
 std::string Collision::ClassName()
