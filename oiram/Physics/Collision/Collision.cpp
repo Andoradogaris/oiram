@@ -3,20 +3,20 @@
 #include "../../Utils/WindowManager/WindowManager.h"
 
 
-/*enum class CollisionDir {
+enum class CollisionDir {
     Haut,
     Bas,
     Gauche,
     Droite,
     Aucune
-};*/
+};
 
 std::string Collision::GetClass()
 {
     return "Collision";
 }
 
-bool Collision::checkCollision(sf::FloatRect playerCol)
+bool Collision::checkCollision(sf::FloatRect entityCol)
 {
     WindowManager* windowManager;
     std::list<sf::FloatRect> collidersToCheck;
@@ -28,7 +28,7 @@ bool Collision::checkCollision(sf::FloatRect playerCol)
     
     for (const sf::FloatRect& col : collidersToCheck)
     {
-        if (playerCol.intersects(col))
+        if (entityCol.intersects(col))
         {
             return true;
         }
@@ -36,7 +36,7 @@ bool Collision::checkCollision(sf::FloatRect playerCol)
     return false;
 }
 
-/*CollisionDir collisionDirection(const sf::FloatRect& objet1, const sf::FloatRect& objet2)
+CollisionDir collisionDirection(const sf::FloatRect& objet1, const sf::FloatRect& objet2)
 {
     float overlapLeft = objet2.left - (objet1.left + objet1.width);
     float overlapRight = (objet2.left + objet2.width) - objet1.left;
@@ -56,7 +56,7 @@ bool Collision::checkCollision(sf::FloatRect playerCol)
     }
     
     return CollisionDir::Aucune;
-}*/
+}
 
 std::string Collision::ClassName()
 {
