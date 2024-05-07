@@ -22,7 +22,7 @@ void EntityManager::CreateActor()
     window_manager->player = player;
     rb = Cast<Rigidbody>(player->components.at("rigidbody"));
     rend = Cast<Renderer>(player->components.at("rend"));
-    rend->sprite.move(500, 500);
+    rend->sprite.move(500, 400);
     rb->useGravity = true;
 
     Cast<Renderer>(platform->components.at("rend"))->sprite.move(500,550);
