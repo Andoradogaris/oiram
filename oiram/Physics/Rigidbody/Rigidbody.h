@@ -22,5 +22,6 @@ public :
     float mass = 80;
     void Gravity(float deltaTime, float multiplier = 1.f);
     void AddForce(const Vector2<float> force, ForceMode mode, float deltaTime=0);
+    void CheckCollisions();
     static std::string ClassName();
 };

@@ -1,5 +1,11 @@
 #include "Rigidbody.h"
 
+#include "../../Objects/Entities/Entity.h"
+#include "../../Utils/TemplateUtils.h"
+
+#include "../Collision/Collision.h"
+#include "../../Objects/Entities/Components/Renderer/Renderer.h"
+
 
 void Rigidbody::Gravity(float deltaTime, float multiplier)
 {
@@ -36,21 +42,66 @@ void Rigidbody::AddForce(const Vector2<float> force, ForceMode mode, float delta
             float rdmXDir = directionDistrib(gen);
             float rdmYDir = directionDistrib(gen);
             
-            if (rdmXDir < 0.5f) {
+            if (rdmXDir < 0.5f)
+            {
                 velocity.x += rdmforce;
             } else {
                 velocity.x -= rdmforce;
             }
 
-            if (rdmYDir < 0.5f) {
+            if (rdmYDir < 0.5f)
+            {
                 velocity.y += length - rdmforce;
             } else {
                 velocity.y -= length - rdmforce;
             }
-
-            std::cout << "Velocity: (" << velocity.x << ", " << velocity.y << ")" << std::endl;
-
             break;
+    }
+
+    CheckCollisions();
+}
+
+void Rigidbody::CheckCollisions()
+{
+    Collision* col = Cast<Collision>(GetOwner()->components.at("Collision"));
+    Renderer* rend = Cast<Renderer>(GetOwner()->renderer);
+
+    if(col->checkCollision(rend->sprite.getGlobalBounds()))
+    {
+        std::list<CollisionDir> directions = col->collisionDirection();
+
+        for(int i = 0; i < directions.size(); i++)
+        {
+            switch(directions)
+            {
+                case CollisionDir::Haut:
+                    if(velocity.y > 0)
+                    {
+                        velocity.y = 0;
+                    }
+                    break;
+                case CollisionDir::Bas:
+                    if(velocity.y < 0)
+                    {
+                        velocity.y = 0;
+                    }
+                    break;
+                case CollisionDir::Gauche:
+                    if(velocity.x < 0)
+                    {
+                        velocity.x = 0;
+                    }
+                    break;
+                case CollisionDir::Droite:
+                    if(velocity.x > 0)
+                    {
+                        velocity.x = 0;
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }
 
