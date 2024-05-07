@@ -60,46 +60,41 @@ void Rigidbody::AddForce(const Vector2<float> force, ForceMode mode,Collision* c
 
 void Rigidbody::CheckCollisions(Collision* col, Renderer* rend)
 {
-    // Collision* col = Cast<Collision>(GetOwner()->components.at("Collision"));
-    // Renderer* rend = Cast<Renderer>(GetOwner()->renderer);
-
-    if(col->checkCollision(rend->sprite.getGlobalBounds()))
-    {
-        std::vector<CollisionDir> directions ;
-        directions = col->collisionDirection(rend->sprite.getGlobalBounds());
+    std::vector<CollisionDir> directions ;
+    directions = col->collisionDirection(rend->sprite.getGlobalBounds());
         
-        for(int i = 0; i < directions.size(); i++)
-        {
+    for(int i = 0; i < directions.size(); i++)
+    {
+        //std::cout << directions.at(i) << std::endl;
             
-            switch(directions.at(i))
+        switch(directions.at(i))
+        {
+        case Haut:
+            if(velocity.y > 0)
             {
-                case CollisionDir::Haut:
-                    if(velocity.y > 0)
-                    {
-                        velocity.y = 0;
-                    }
-                    break;
-                case CollisionDir::Bas:
-                    if(velocity.y < 0)
-                    {
-                        velocity.y = 0;
-                    }
-                    break;
-                case CollisionDir::Gauche:
-                    if(velocity.x < 0)
-                    {
-                        velocity.x = 0;
-                    }
-                    break;
-                case CollisionDir::Droite:
-                    if(velocity.x > 0)
-                    {
-                        velocity.x = 0;
-                    }
-                    break;
-                default:
-                    break;
+                velocity.y = 0;
             }
+            break;
+        case Bas:
+            if(velocity.y < 0)
+            {
+                velocity.y = 0;
+            }
+            break;
+        case Gauche:
+            if(velocity.x < 0)
+            {
+                velocity.x = 0;
+            }
+            break;
+        case Droite:
+            if(velocity.x > 0)
+            {
+                velocity.x = 0;
+            }
+            break;
+        default:
+            break;
         }
     }
 }
