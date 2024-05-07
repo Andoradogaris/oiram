@@ -19,7 +19,6 @@ std::string Collision::GetClass()
 bool Collision::checkCollision(sf::FloatRect entityCol)
 {
     WindowManager* windowManager;
-    std::list<sf::FloatRect> collidersToCheck;
 
     for (Renderer* item : windowManager->objectToDraw)
     {

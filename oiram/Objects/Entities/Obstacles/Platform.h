@@ -1,8 +1,9 @@
 #pragma once
 #include "../Entity.h"
 
-class Platform : Entity
+class Platform : public Entity
 {
 public:
+    static std::string ClassName();
     std::string GetClass() override;
 };

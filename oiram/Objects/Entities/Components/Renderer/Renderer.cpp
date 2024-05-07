@@ -13,7 +13,7 @@ Renderer::Renderer()
     spriteMap = {
         {"Player","\\Assets\\mario_projet.png"},
         {"Champignon", "\\Assets\\cahmpignon_projet.png"},
-        {"Obstacle","\\Assets\\block_projet.png"}
+        {"Platform","\\Assets\\block_projet.png"}
     };
 }
 

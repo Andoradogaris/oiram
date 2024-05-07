@@ -1,6 +1,7 @@
 #include "Entity.h"
 
 
+#include "../../Physics/Collision/Collision.h"
 #include "../../Utils/ObjectManager/ObjectManager.h"
 #include "Components/Renderer/Renderer.h"
 #include "Components/Transform/Transform.h"
@@ -29,12 +30,14 @@ std::string Entity::ClassName()
 Entity::Entity()
 {
     renderer = ObjectManager::Get()->CastCreateObject<Renderer>("Renderer");
+    AddComponent("rend",renderer);
+    transform = ObjectManager::Get()->CastCreateObject<Transform>("Transform");
+    AddComponent("transf", transform);
+    colision = ObjectManager::Get()->CastCreateObject<Collision>(Collision::ClassName());
+    AddComponent("Collision", colision);
 }
 
 void Entity::InitializeEntity()
 {
-    transform = ObjectManager::Get()->CastCreateObject<Transform>("Transform");
-    AddComponent("transf", transform);
-    AddComponent("rend",renderer);
 
 }

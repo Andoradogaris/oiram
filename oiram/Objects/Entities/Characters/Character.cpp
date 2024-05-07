@@ -1,5 +1,6 @@
 #include "Character.h"
 
+#include "../../../Physics/Collision/Collision.h"
 #include "../../../Physics/Rigidbody/Rigidbody.h"
 #include "../../../Utils/ObjectManager/ObjectManager.h"
 
@@ -14,8 +15,10 @@ std::string Character::GetClass()
 
 void Character::InitCharacterComponents()
 {
-    rb = ObjectManager::Get()->CastCreateObject<Rigidbody>("Rigidbody");
+    rb = ObjectManager::Get()->CastCreateObject<Rigidbody>(Rigidbody::ClassName());
+    col = ObjectManager::Get()->CastCreateObject<Collision>(Collision::ClassName());
     AddComponent("rigidbody",rb);
+    
 }
 
 std::string Character::ClassName()

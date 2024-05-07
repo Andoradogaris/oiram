@@ -2,6 +2,8 @@
 #include "../../Objects/Entities/Characters/Player/Player.h"
 #include "../ObjectManager/ObjectManager.h"
 #include "../Utils.h"
+#include "../../Objects/Entities/Obstacles/Platform.h"
+#include "../../Physics/Collision/Collision.h"
 #include "../../Physics/Rigidbody/Rigidbody.h"
 
 void EntityManager::CreateActor()
@@ -11,12 +13,17 @@ void EntityManager::CreateActor()
     player->InitializeEntity();
     player->InitCharacterComponents();
     Cast<Renderer>(player->components.at("rend"))->SetTexture(player);
+    Platform* platform = ObjectManager::Get()->CastCreateObject<Platform>(Platform::ClassName());
+    Cast<Renderer>(platform->components.at("rend"))->SetTexture(platform);
+    RegisterActor(platform, platform->GetClass());
+    
     window_manager->AddNewObject(Cast<Renderer>(player->components.at("rend")));
-    window_manager->player = player;
+    window_manager->AddNewObject(Cast<Renderer>(platform->components.at("rend")));
     rb = Cast<Rigidbody>(player->components.at("rigidbody"));
     rend = Cast<Renderer>(player->components.at("rend"));
     rend->sprite.move(500, 500);
     rb->useGravity = true;
+    RegisterCollisionList();
 }
 
 void EntityManager::ActorAction()
@@ -25,7 +32,11 @@ void EntityManager::ActorAction()
     Utils::GetEngine()->deltaTime = deltaTime;
     for (EntityList* entity : entityList)
     {
-        entity->entity->ApplyMovement(deltaTime);
+        if(entity->name != "Platform")
+        {
+            Cast<Character>(entity->entity)->ApplyMovement(deltaTime);
+            
+        }
     }
 }
 
@@ -39,8 +50,25 @@ std::string EntityManager::ClassName()
     return "EntityManager";
 }
 
-void EntityManager::RegisterActor(Character* actor, std::string className)
+void EntityManager::RegisterActor(Entity* actor, std::string className)
 {
     EntityList* entity = new EntityList(className,actor);
     entityList.push_back(entity);
+}
+
+void EntityManager::RegisterCollisionList()
+{
+    
+    for (size_t i = 0; i < entityList.size(); i++)
+    {
+        for(size_t j = 0; j < entityList.size(); j++)
+        {
+            if(i != j)
+            {
+                Cast<Collision>(entityList[i]->entity->components.at("Collision"))->collidersToCheck.push_back(Cast<Renderer>(entityList[j]->entity->components.at("rend"))->sprite.getGlobalBounds());
+            }
+            
+        }
+
+    }
 }

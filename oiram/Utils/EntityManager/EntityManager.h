@@ -4,9 +4,9 @@
 
 struct EntityList
 {
-    EntityList(std::string& myName, Character* myEntity):name(myName),entity(myEntity){};
+    EntityList(std::string& myName, Entity* myEntity):name(myName),entity(myEntity){};
     std::string name;
-    Character* entity;    
+    Entity* entity;    
 };
 
 class EntityManager : public BaseObject
@@ -21,7 +21,7 @@ public:
     void ActorAction();
     std::string GetClass() override;
     static std::string ClassName();
-    void RegisterActor(Character* actor, std::string className);
+    void RegisterActor(Entity* actor, std::string className);
     std::vector<EntityList*> entityList;
-
+    void RegisterCollisionList();
 };

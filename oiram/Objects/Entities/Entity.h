@@ -7,6 +7,7 @@
 
 class Transform;
 class Renderer;
+class Collision;
 
 class Entity : public GameObject
 {
@@ -16,6 +17,7 @@ public:
     Entity();
     Transform* transform;
     Renderer* renderer;
+    Collision* colision;
     void InitializeEntity();
     void AddComponent(const std::string& ComponentID, Components* component);
     std::string GetClass() override;
