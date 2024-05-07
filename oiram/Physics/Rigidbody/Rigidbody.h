@@ -1,6 +1,7 @@
 #pragma once
-#include "../../BaseObject.h"
+// #include "../../BaseObject.h"
 #include "../../Objects/Entities/Components/Components.h"
+
 
 enum ForceMode
 {

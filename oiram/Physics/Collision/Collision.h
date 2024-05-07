@@ -3,7 +3,7 @@
 
 #include "../../Objects/Entities/Components/Components.h"
 
-enum class CollisionDir {
+enum CollisionDir {
     Haut,
     Bas,
     Gauche,
@@ -18,7 +18,7 @@ public :
     std::string GetClass() override;
     std::list<sf::FloatRect> collidersToCheck;
     bool checkCollision(sf::FloatRect playerCol);
-    std::list<CollisionDir> collisionDirection();
+    std::vector<CollisionDir> collisionDirection();
     static std::string ClassName();
 };
 

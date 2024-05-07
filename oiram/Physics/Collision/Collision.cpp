@@ -10,12 +10,6 @@ std::string Collision::GetClass()
 
 bool Collision::checkCollision(sf::FloatRect entityCol)
 {
-    WindowManager* windowManager;
-
-    for (Renderer* item : windowManager->objectToDraw)
-    {
-        collidersToCheck.push_back(item->sprite.getGlobalBounds());
-    }
     
     for (const sf::FloatRect& col : collidersToCheck)
     {
@@ -27,9 +21,9 @@ bool Collision::checkCollision(sf::FloatRect entityCol)
     return false;
 }
 
-std::list<CollisionDir> collisionDirection(const sf::FloatRect& objet1, const sf::FloatRect& objet2)
+std::vector<CollisionDir> collisionDirection(const sf::FloatRect& objet1, const sf::FloatRect& objet2)
 {
-    std::list <CollisionDir> result;
+    std::vector<CollisionDir> result;
     
     float overlapLeft = objet2.left - (objet1.left + objet1.width);
     float overlapRight = (objet2.left + objet2.width) - objet1.left;

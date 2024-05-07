@@ -19,6 +19,7 @@ void EntityManager::CreateActor()
     
     window_manager->AddNewObject(Cast<Renderer>(player->components.at("rend")));
     window_manager->AddNewObject(Cast<Renderer>(platform->components.at("rend")));
+    window_manager->player = player;
     rb = Cast<Rigidbody>(player->components.at("rigidbody"));
     rend = Cast<Renderer>(player->components.at("rend"));
     rend->sprite.move(500, 500);

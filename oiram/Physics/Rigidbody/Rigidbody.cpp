@@ -1,8 +1,5 @@
 #include "Rigidbody.h"
-
-#include "../../Objects/Entities/Entity.h"
 #include "../../Utils/TemplateUtils.h"
-
 #include "../Collision/Collision.h"
 #include "../../Objects/Entities/Components/Renderer/Renderer.h"
 
@@ -68,11 +65,12 @@ void Rigidbody::CheckCollisions()
 
     if(col->checkCollision(rend->sprite.getGlobalBounds()))
     {
-        std::list<CollisionDir> directions = col->collisionDirection();
-
+        std::vector<CollisionDir> directions = col->collisionDirection();
+        
         for(int i = 0; i < directions.size(); i++)
         {
-            switch(directions)
+            
+            switch(directions[i])
             {
                 case CollisionDir::Haut:
                     if(velocity.y > 0)
