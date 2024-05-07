@@ -66,7 +66,7 @@ void Rigidbody::CheckCollisions()
     if(col->checkCollision(rend->sprite.getGlobalBounds()))
     {
         std::vector<CollisionDir> directions ;
-        directions = col->collisionDirection();
+        directions = col->collisionDirection(rend->sprite.getGlobalBounds());
         
         for(int i = 0; i < directions.size(); i++)
         {
