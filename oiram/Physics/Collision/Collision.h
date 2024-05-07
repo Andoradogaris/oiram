@@ -18,7 +18,7 @@ public :
     std::string GetClass() override;
     std::list<sf::FloatRect> collidersToCheck;
     bool checkCollision(sf::FloatRect playerCol);
-    std::vector<CollisionDir> collisionDirection(const sf::FloatRect& objet1, const sf::FloatRect& objet2);
+    std::vector<CollisionDir> collisionDirection(const sf::FloatRect& objet1);
     static std::string ClassName();
 };
 
