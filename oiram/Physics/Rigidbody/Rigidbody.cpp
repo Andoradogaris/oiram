@@ -4,15 +4,15 @@
 #include "../../Objects/Entities/Components/Renderer/Renderer.h"
 
 
-void Rigidbody::Gravity(float deltaTime, float multiplier)
+void Rigidbody::Gravity(float deltaTime,Collision* col, Renderer* rend, float multiplier)
 {
     if(useGravity)
     {
-        AddForce(Vector2<float>(0, gravityScale * multiplier), Constant, deltaTime);
+        AddForce(Vector2<float>(0, gravityScale * multiplier), Constant,col,rend, deltaTime);
     }
 }
 
-void Rigidbody::AddForce(const Vector2<float> force, ForceMode mode, float deltaTime)
+void Rigidbody::AddForce(const Vector2<float> force, ForceMode mode,Collision* col, Renderer* rend, float deltaTime)
 {
 
     switch(mode)
@@ -55,13 +55,13 @@ void Rigidbody::AddForce(const Vector2<float> force, ForceMode mode, float delta
             break;
     }
 
-    CheckCollisions();
+    CheckCollisions(col, rend);
 }
 
-void Rigidbody::CheckCollisions()
+void Rigidbody::CheckCollisions(Collision* col, Renderer* rend)
 {
-    Collision* col = Cast<Collision>(GetOwner()->components.at("Collision"));
-    Renderer* rend = Cast<Renderer>(GetOwner()->renderer);
+    // Collision* col = Cast<Collision>(GetOwner()->components.at("Collision"));
+    // Renderer* rend = Cast<Renderer>(GetOwner()->renderer);
 
     if(col->checkCollision(rend->sprite.getGlobalBounds()))
     {

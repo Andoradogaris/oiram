@@ -24,6 +24,9 @@ void EntityManager::CreateActor()
     rend = Cast<Renderer>(player->components.at("rend"));
     rend->sprite.move(500, 500);
     rb->useGravity = true;
+
+    Cast<Renderer>(platform->components.at("rend"))->sprite.move(500,550);
+    
     RegisterCollisionList();
 }
 
