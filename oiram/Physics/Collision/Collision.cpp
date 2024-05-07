@@ -11,9 +11,9 @@ std::string Collision::GetClass()
 bool Collision::checkCollision(sf::FloatRect entityCol)
 {
     
-    for (const sf::FloatRect& col : collidersToCheck)
+    for (const sf::FloatRect& colRect : collidersToCheck)
     {
-        if (entityCol.intersects(col))
+        if (entityCol.intersects(colRect))
         {
             return true;
         }
@@ -21,7 +21,7 @@ bool Collision::checkCollision(sf::FloatRect entityCol)
     return false;
 }
 
-std::vector<CollisionDir> collisionDirection(const sf::FloatRect& objet1, const sf::FloatRect& objet2)
+std::vector<CollisionDir> Collision::collisionDirection(const sf::FloatRect& objet1, const sf::FloatRect& objet2)
 {
     std::vector<CollisionDir> result;
     

@@ -65,12 +65,13 @@ void Rigidbody::CheckCollisions()
 
     if(col->checkCollision(rend->sprite.getGlobalBounds()))
     {
-        std::vector<CollisionDir> directions = col->collisionDirection();
+        std::vector<CollisionDir> directions ;
+        directions = col->collisionDirection();
         
         for(int i = 0; i < directions.size(); i++)
         {
             
-            switch(directions[i])
+            switch(directions.at(i))
             {
                 case CollisionDir::Haut:
                     if(velocity.y > 0)
