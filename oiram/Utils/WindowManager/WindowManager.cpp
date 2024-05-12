@@ -33,10 +33,10 @@ void WindowManager::WindowDraw()
 
         deltaTime = clock.restart().asSeconds();
         Utils::GetEngine()->deltaTime = deltaTime;
-
+        std::sort(objectToDraw.begin(), objectToDraw.end());
         for (auto obj : objectToDraw)
         {
-            window.draw(obj->sprite);
+            window.draw(obj.first->sprite);
         }
 
         window.display();
@@ -50,9 +50,9 @@ std::string WindowManager::GetClass()
     return "WindowManager";
 }
 
-void WindowManager::AddNewObject(Renderer* object)
+void WindowManager::AddNewObject(Renderer* object, int layerValue)
 {
-    objectToDraw.push_back(object);
+    objectToDraw.push_back(std::make_pair(object, layerValue));
     
 }
 
