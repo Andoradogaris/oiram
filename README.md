@@ -35,4 +35,4 @@ Vous pouvez désormais lancer le projet
 
 ## Architecture de projet
 
-[image structure](diagrame.drawio)
+![image structure](diagrame.drawio)
