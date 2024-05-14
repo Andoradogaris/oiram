@@ -25,11 +25,11 @@
     ```
     ou telecharger le fichier zip
 3. Cmake
-    1. Installer [cmake](https://cmake.org/download/)
+    1. Installer [cmake](https://cmake.org/download/). Prenez la version 3.25 minimum.
     2. Lancer le fichier **build.bat** dans le repository
 4. Rider
     1. Cliquer sur **ALL_BUILD** a coté du bouton executer
-    2. Selectionner oiram
+    2. Selectionner **oiram**
 
 Vous pouvez désormais lancer le projet
 
