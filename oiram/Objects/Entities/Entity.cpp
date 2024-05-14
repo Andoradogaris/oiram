@@ -29,11 +29,11 @@ std::string Entity::ClassName()
 
 Entity::Entity()
 {
-    renderer = ObjectManager::Get()->CastCreateObject<Renderer>("Renderer");
+    renderer = ObjectManager::get()->CastCreateObject<Renderer>("Renderer");
     AddComponent("rend",renderer);
-    transform = ObjectManager::Get()->CastCreateObject<Transform>("Transform");
+    transform = ObjectManager::get()->CastCreateObject<Transform>("Transform");
     AddComponent("transf", transform);
-    colision = ObjectManager::Get()->CastCreateObject<Collision>(Collision::ClassName());
+    colision = ObjectManager::get()->CastCreateObject<Collision>(Collision::ClassName());
     AddComponent("Collision", colision);
 }
 

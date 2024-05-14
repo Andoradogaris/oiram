@@ -8,12 +8,12 @@
 
 void EntityManager::CreateActor()
 {
-    Player* player = ObjectManager::Get()->CastCreateObject<Player>(Player::ClassName());
+    Player* player = ObjectManager::get()->CastCreateObject<Player>(Player::ClassName());
     RegisterActor(player, player->GetClass());
     player->InitializeEntity();
     player->InitCharacterComponents();
     Cast<Renderer>(player->components.at("rend"))->SetTexture(player);
-    Platform* platform = ObjectManager::Get()->CastCreateObject<Platform>(Platform::ClassName());
+    Platform* platform = ObjectManager::get()->CastCreateObject<Platform>(Platform::ClassName());
     Cast<Renderer>(platform->components.at("rend"))->SetTexture(platform);
     RegisterActor(platform, platform->GetClass());
     

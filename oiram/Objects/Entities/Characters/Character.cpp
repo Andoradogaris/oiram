@@ -15,8 +15,8 @@ std::string Character::GetClass()
 
 void Character::InitCharacterComponents()
 {
-    rb = ObjectManager::Get()->CastCreateObject<Rigidbody>(Rigidbody::ClassName());
-    col = ObjectManager::Get()->CastCreateObject<Collision>(Collision::ClassName());
+    rb = ObjectManager::get()->CastCreateObject<Rigidbody>(Rigidbody::ClassName());
+    col = ObjectManager::get()->CastCreateObject<Collision>(Collision::ClassName());
     AddComponent("rigidbody",rb);
     
 }
