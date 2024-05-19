@@ -24,7 +24,7 @@ public:
         BaseObject* object = factory.CreateClass(classId);
         return Cast<T>(object);
     }
-    static ObjectManager* Get();
+    static ObjectManager* get();
     std::string GetClass() override;
     std::vector<BaseObject*> gameObjectsList;
     static std::string ClassName();

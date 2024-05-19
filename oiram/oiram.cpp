@@ -10,7 +10,7 @@
 
 int main()
 {
-    Engine* engine = ObjectManager::Get()->CastCreateObject<Engine>(Engine::ClassName());
+    Engine* engine = ObjectManager::get()->CastCreateObject<Engine>(Engine::ClassName());
     Utils::SetEngine(engine);
     engine->StartEngine();
     return 0;

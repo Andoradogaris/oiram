@@ -17,10 +17,10 @@ public:
     Player* player;
     sf::Clock clock;
     float deltaTime = 0.f;
-    std::list<Renderer*> objectToDraw;
+    std::vector<std::pair<Renderer*, int>> objectToDraw;
     void WindowDraw();
     std::string GetClass() override;
-    void AddNewObject(Renderer* object);
+    void AddNewObject(Renderer* object, int layerValue);
     static std::string ClassName();
     InputManager* inputManagerGame;
 };

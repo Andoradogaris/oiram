@@ -20,9 +20,9 @@ std::string Engine::GetClass()
 
 void Engine::StartEngine()
 {
-    WindowManager* windowManager = ObjectManager::Get()->CastCreateObject<WindowManager>(WindowManager::ClassName());
-    InputManager* inputManager = ObjectManager::Get()->CastCreateObject<InputManager>(InputManager::ClassName());
-    EntityManager* entityManager = ObjectManager::Get()->CastCreateObject<EntityManager>(EntityManager::ClassName());
+    WindowManager* windowManager = ObjectManager::get()->CastCreateObject<WindowManager>(WindowManager::ClassName());
+    InputManager* inputManager = ObjectManager::get()->CastCreateObject<InputManager>(InputManager::ClassName());
+    EntityManager* entityManager = ObjectManager::get()->CastCreateObject<EntityManager>(EntityManager::ClassName());
     entityManager->window_manager = windowManager;
     windowManager->entityManager = entityManager;
     entityManager->CreateActor();

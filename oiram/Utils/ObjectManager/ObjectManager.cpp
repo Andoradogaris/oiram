@@ -11,7 +11,7 @@ ObjectManager::~ObjectManager()
     gameObjectsList.clear();
 }
 
-ObjectManager* ObjectManager::Get()
+ObjectManager* ObjectManager::get()
 {
     if(m_instance == nullptr)
     {

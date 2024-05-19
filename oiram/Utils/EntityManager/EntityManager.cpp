@@ -9,7 +9,7 @@
 void EntityManager::CreateActor()
 {
     //On créé un joueur
-    Player* player = ObjectManager::Get()->CastCreateObject<Player>(Player::ClassName());
+    Player* player = ObjectManager::get()->CastCreateObject<Player>(Player::ClassName());
     Renderer* playerRend = Cast<Renderer>(player->components.at("rend"));
     player->InitializeEntity();
     player->InitCharacterComponents();
@@ -17,22 +17,22 @@ void EntityManager::CreateActor()
     RegisterActor(player, player->GetClass());
 
     //On créé une plateforme
-    Platform* platform = ObjectManager::Get()->CastCreateObject<Platform>(Platform::ClassName());
+    Platform* platform = ObjectManager::get()->CastCreateObject<Platform>(Platform::ClassName());
     Renderer* platformRend = Cast<Renderer>(platform->components.at("rend"));
     platformRend->SetTexture(platform);
     platformRend->sprite.scale(7.f, 1.f);
     RegisterActor(platform, platform->GetClass());
 
     //On créé une plateforme
-    Platform* platform2 = ObjectManager::Get()->CastCreateObject<Platform>(Platform::ClassName());
+    Platform* platform2 = ObjectManager::get()->CastCreateObject<Platform>(Platform::ClassName());
     Renderer* platform2Rend = Cast<Renderer>(platform2->components.at("rend"));
     platform2Rend->SetTexture(platform2);
     platform2Rend->sprite.scale(1.f, 5.f);
     RegisterActor(platform2, platform2->GetClass());
     
-    window_manager->AddNewObject(playerRend);
-    window_manager->AddNewObject(platformRend);
-    window_manager->AddNewObject(platform2Rend);
+    window_manager->AddNewObject(playerRend, 1);
+    window_manager->AddNewObject(platformRend, 2);
+    window_manager->AddNewObject(platform2Rend, 2);
     window_manager->player = player;
     rb = Cast<Rigidbody>(player->components.at("rigidbody"));
     playerRend->sprite.move(500, 500);
