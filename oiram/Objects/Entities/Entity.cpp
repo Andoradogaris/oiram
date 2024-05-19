@@ -1,6 +1,4 @@
 #include "Entity.h"
-
-
 #include "../../Physics/Collision/Collision.h"
 #include "../../Utils/ObjectManager/ObjectManager.h"
 #include "Components/Renderer/Renderer.h"

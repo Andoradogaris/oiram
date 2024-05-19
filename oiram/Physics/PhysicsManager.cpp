@@ -1,7 +1,5 @@
 #include "PhysicsManager.h"
-
 #include <iostream>
-
 #include "Rigidbody/Rigidbody.h"
 
 std::string ApplyPhysics::GetClass()

@@ -4,11 +4,11 @@
 #include "../../Objects/Entities/Components/Components.h"
 
 enum CollisionDir {
-    Haut,
-    Bas,
-    Gauche,
-    Droite,
-    Aucune
+    Up,
+    Down,
+    Left,
+    Right,
+    Nothing
 };
 
 class Collision : public Components

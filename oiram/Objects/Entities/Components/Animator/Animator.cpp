@@ -1,5 +1,4 @@
 #include "Animator.h"
-
 #include "../Renderer/Renderer.h"
 
 Animator::Animator()
@@ -19,18 +18,23 @@ void Animator::SetAnimation(const std::string& name) {
     currentTime = 0.0f;
 }
 
-void Animator::UpdateAnimation(float deltaTime) {
-    if (currentAnimation == -1) {
+//Passe de frames en frames dans l'animation
+void Animator::UpdateAnimation(float deltaTime)
+{
+    if (currentAnimation == -1)
+    {
         return;
     }
 
     UpdateCurrentFrame(deltaTime);
-    
 }
 
-int Animator::FindAnimationIndex(const std::string& name) const {
-    for (size_t i = 0; i < animations.size(); i++) {
-        if (animations[i].name == name) {
+int Animator::FindAnimationIndex(const std::string& name) const
+{
+    for (size_t i = 0; i < animations.size(); i++)
+    {
+        if (animations[i].name == name)
+        {
             return i;
         }
     }
@@ -50,10 +54,13 @@ void Animator::UpdateCurrentFrame(float deltaTime)
         currentFrame++;
 
         // Boucler vers le début si la fin de l'animation est atteinte
-        if (currentFrame >= _currentAnimation.frames.size()) {
+        if (currentFrame >= _currentAnimation.frames.size())
+        {
             currentFrame = 0;
         }
     }
+
+    //Set la frame to draw (désactivé car nous n'avons pas d'animations)
     //Entity.components.at("Renderer")
     //SetFrame()
 }

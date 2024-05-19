@@ -1,7 +1,5 @@
 #include "Collision.h"
-
 #include "../../Utils/WindowManager/WindowManager.h"
-
 
 std::string Collision::GetClass()
 {
@@ -15,11 +13,10 @@ bool Collision::checkCollision(sf::FloatRect entityCol)
     {
         if (entityCol.intersects(colRect))
         {
-            //std::cout << "true" << std::endl;
+            //return true si pour au moins un collider de la scène, il y a une collision avec notre objet parent
             return true;
         }
     }
-    //std::cout << "false" << std::endl;
     return false;
 }
 
@@ -29,43 +26,68 @@ std::vector<CollisionDir> Collision::collisionDirection(const sf::FloatRect& ent
 
     if (checkCollision(entityCol))
     {
+        //On a une collision donc on cherche dans quelle direction
         for (const sf::FloatRect& colRect : collidersToCheck)
         {
-            float overlapLeft = colRect.left - (entityCol.left + entityCol.width);
-            float overlapRight = (colRect.left + colRect.width) - entityCol.left;
-            float overlapTop = colRect.top - (entityCol.top + entityCol.height);
-            float overlapBottom = (colRect.top + colRect.height) - entityCol.top;
+            //Coin en haut à droite de la boite de collision du parent
+            float entityColRight = entityCol.left + entityCol.width;
+            //Coin en bas à gauche de la boite de collision du parent
+            float entityColBottom = entityCol.top + entityCol.height;
 
-            if (overlapLeft > 0 || overlapRight > 0 || overlapTop > 0 || overlapBottom > 0)
+            //Coin en bas à droite de la boite de collision de l'entité de la collision
+            float colRectRight = colRect.left + colRect.width;
+            //Coin en bas à gauche de la boite de collision de l'entité de la collision
+            float colRectBottom = colRect.top + colRect.height;
+
+            //Si la droite d'un objet heurte la gauche du parent
+            bool LeftCheckResult = colRect.left - entityColRight <= 0;
+            //Si la gauche d'un objet heurte la droite du parent
+            bool RightCheckResult = colRectRight - entityCol.left >= 0;
+            //Si le bas d'un objet heurte le haut du parent
+            bool TopCheckResult = colRect.top - entityColBottom <= 0;
+            //Si le bas d'un objet heurte le haut du parent
+            bool BottomCheckResult = colRectBottom - entityCol.top >= 0;
+
+            //On vérifie que les objets soient bien superposés sur la hauteur également
+            bool overlapLeft = LeftCheckResult && (TopCheckResult || BottomCheckResult);
+            bool overlapRight = RightCheckResult && (TopCheckResult || BottomCheckResult);
+            bool overlapTop =  TopCheckResult && (LeftCheckResult || RightCheckResult);
+            bool overlapBottom = BottomCheckResult && (LeftCheckResult || RightCheckResult);
+            
+            std::cout << "overlapLeft : " << overlapLeft << std::endl;
+            std::cout << "overlapRight : " << overlapRight << std::endl;
+            std::cout << "overlapTop : " << overlapTop << std::endl;
+            std::cout << "overlapBottom : " << overlapBottom << std::endl;
+            
+            // if (overlapLeft && (entityCol.top <= colRectBottom || entityColBottom >= colRect.top))
+            // {
+            //     result.push_back(Left);
+            // }
+            //
+            // if (overlapRight && (entityCol.top <= colRectBottom || entityColBottom >= colRect.top))
+            // {
+            //     result.push_back(Right);
+            // }
+            
+            if (overlapBottom && (entityCol.left <= colRectRight || entityColRight >= colRect.left))
             {
-                if (overlapLeft < overlapRight || overlapLeft < overlapTop || overlapLeft < overlapBottom)
-                {
-                    result.push_back(CollisionDir::Gauche);
-                }
-
-                if (overlapRight < overlapLeft || overlapRight < overlapTop || overlapRight < overlapBottom)
-                {
-                    result.push_back(CollisionDir::Droite);
-                }
-
-                if (overlapTop < overlapLeft || overlapTop < overlapRight || overlapTop < overlapBottom)
-                {
-                    result.push_back(CollisionDir::Haut);
-                }
-
-                if (overlapBottom < overlapLeft || overlapBottom < overlapRight || overlapBottom < overlapTop)
-                {
-                    result.push_back(CollisionDir::Bas);
-                }
+                result.push_back(Down);
+            }
+            
+            if (overlapTop && (entityCol.left <= colRectRight || entityColRight >= colRect.left))
+            {
+                result.push_back(Up);
             }
         }
+
+        std::cout << result.size() << std::endl;
 
         if(!result.empty())
         {
             return result;
         }
     }
-    result.push_back(CollisionDir::Aucune);
+    result.push_back(Nothing);
     
     return result;
 }

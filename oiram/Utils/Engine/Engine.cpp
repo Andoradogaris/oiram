@@ -1,5 +1,4 @@
 ﻿#include "Engine.h"
-
 #include "../WindowManager/WindowManager.h"
 #include "../ObjectManager/ObjectManager.h"
 #include "../EntityManager/EntityManager.h"

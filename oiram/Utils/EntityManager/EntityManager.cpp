@@ -8,24 +8,38 @@
 
 void EntityManager::CreateActor()
 {
+    //On créé un joueur
     Player* player = ObjectManager::Get()->CastCreateObject<Player>(Player::ClassName());
-    RegisterActor(player, player->GetClass());
+    Renderer* playerRend = Cast<Renderer>(player->components.at("rend"));
     player->InitializeEntity();
     player->InitCharacterComponents();
-    Cast<Renderer>(player->components.at("rend"))->SetTexture(player);
+    playerRend->SetTexture(player);
+    RegisterActor(player, player->GetClass());
+
+    //On créé une plateforme
     Platform* platform = ObjectManager::Get()->CastCreateObject<Platform>(Platform::ClassName());
-    Cast<Renderer>(platform->components.at("rend"))->SetTexture(platform);
+    Renderer* platformRend = Cast<Renderer>(platform->components.at("rend"));
+    platformRend->SetTexture(platform);
+    platformRend->sprite.scale(7.f, 1.f);
     RegisterActor(platform, platform->GetClass());
+
+    //On créé une plateforme
+    Platform* platform2 = ObjectManager::Get()->CastCreateObject<Platform>(Platform::ClassName());
+    Renderer* platform2Rend = Cast<Renderer>(platform2->components.at("rend"));
+    platform2Rend->SetTexture(platform2);
+    platform2Rend->sprite.scale(1.f, 5.f);
+    RegisterActor(platform2, platform2->GetClass());
     
-    window_manager->AddNewObject(Cast<Renderer>(player->components.at("rend")));
-    window_manager->AddNewObject(Cast<Renderer>(platform->components.at("rend")));
+    window_manager->AddNewObject(playerRend);
+    window_manager->AddNewObject(platformRend);
+    window_manager->AddNewObject(platform2Rend);
     window_manager->player = player;
     rb = Cast<Rigidbody>(player->components.at("rigidbody"));
-    rend = Cast<Renderer>(player->components.at("rend"));
-    rend->sprite.move(500, 500);
+    playerRend->sprite.move(500, 500);
     rb->useGravity = true;
 
-    Cast<Renderer>(platform->components.at("rend"))->sprite.move(500,550);
+    platformRend->sprite.move(500,550);
+    platform2Rend->sprite.move(600,500);
     
     RegisterCollisionList();
 }
@@ -69,7 +83,9 @@ void EntityManager::RegisterCollisionList()
         {
             if(i != j)
             {
-                Cast<Collision>(entityList[i]->entity->components.at("Collision"))->collidersToCheck.push_back(Cast<Renderer>(entityList[j]->entity->components.at("rend"))->sprite.getGlobalBounds());
+                Collision* entityCol = Cast<Collision>(entityList[i]->entity->components.at("Collision"));
+                Renderer* entityRend = Cast<Renderer>(entityList[j]->entity->components.at("rend"));
+                entityCol->collidersToCheck.push_back(entityRend->sprite.getGlobalBounds());
             }
             
         }
