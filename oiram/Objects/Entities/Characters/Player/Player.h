@@ -3,9 +3,12 @@
 #include "../../../../Utils/TemplateUtils.h"
 
 
+class CameraManager;
+
 class Player : public Character
 {
 public:
+    CameraManager* camera;
     Player();
     float speed = 5.f;
     float jumpValue = 30.f;
@@ -17,4 +20,5 @@ public:
     void Move(float horizontal, float verticale);
     void ResetMove();
     void ApplyMovement(float deltaTime) override;
+    void InitializePlayerCam();
 };

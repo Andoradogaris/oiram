@@ -3,6 +3,9 @@
 #include "../../../../Physics/Rigidbody/Rigidbody.h"
 #include "../../../../Utils/Utils.h"
 #include "../../../../Utils/ObjectManager/ObjectManager.h"
+#include "../../Components/CameraManager/CameraManager.h"
+#include "../../Components/Transform/Transform.h"
+
 
 Player::Player()
 {
@@ -22,6 +25,7 @@ std::string Player::ClassName()
 
 void Player::Jump()
 {
+    std::cout << "Jump" << std::endl;
     rb->velocity = Vector2<float>(0,0);
     rb->AddForce(Vector2<float>(-moveX, jumpValue), Impulse,Cast<Collision>(components.at("Collision")), Cast<Renderer>(components.at("rend")), Utils::GetEngine()->deltaTime);
 }
@@ -41,7 +45,22 @@ void Player::ResetMove()
 
 void Player::ApplyMovement(float deltaTime)
 {
-    
-    rb->Gravity(deltaTime,Cast<Collision>(components.at("Collision")), Cast<Renderer>(components.at("rend")),1.f);
-    renderer->sprite.move(rb->velocity.x *  Utils::GetEngine()->deltaTime, rb->velocity.y *  Utils::GetEngine()->deltaTime);
+    if(Cast<Transform>(components.at("Transform"))->position.x < camera->maxX ||
+        Cast<Transform>(components.at("Transform"))->position.x > camera->minX)
+    {
+        camera->MoveCamera(this);
+        rb->Gravity(deltaTime,Cast<Collision>(components.at("Collision")), Cast<Renderer>(components.at("rend")),1.f);
+        Cast<Transform>(components.at("Transform"))->position.x += rb->velocity.x; 
+    }else
+    {
+        rb->Gravity(deltaTime,Cast<Collision>(components.at("Collision")), Cast<Renderer>(components.at("rend")),1.f);
+        renderer->sprite.move(rb->velocity.x *  Utils::GetEngine()->deltaTime, rb->velocity.y *  Utils::GetEngine()->deltaTime);
+        Cast<Transform>(components.at("Transform"))->position.x += rb->velocity.x; 
+    }
+
+}
+
+void Player::InitializePlayerCam()
+{
+    camera = ObjectManager::get()->CastCreateObject<CameraManager>(CameraManager::ClassName());
 }

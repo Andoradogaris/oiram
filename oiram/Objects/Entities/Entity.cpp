@@ -32,7 +32,7 @@ Entity::Entity()
     renderer = ObjectManager::get()->CastCreateObject<Renderer>("Renderer");
     AddComponent("rend",renderer);
     transform = ObjectManager::get()->CastCreateObject<Transform>("Transform");
-    AddComponent("transf", transform);
+    AddComponent("Transform", transform);
     colision = ObjectManager::get()->CastCreateObject<Collision>(Collision::ClassName());
     AddComponent("Collision", colision);
 }

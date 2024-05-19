@@ -2,6 +2,7 @@
 #include "../../Objects/Entities/Characters/Player/Player.h"
 #include "../ObjectManager/ObjectManager.h"
 #include "../Utils.h"
+#include "../../Objects/Entities/Components/CameraManager/CameraManager.h"
 #include "../../Objects/Entities/Obstacles/Platform.h"
 #include "../../Physics/Collision/Collision.h"
 #include "../../Physics/Rigidbody/Rigidbody.h"
@@ -12,9 +13,14 @@ void EntityManager::CreateActor()
     RegisterActor(player, player->GetClass());
     player->InitializeEntity();
     player->InitCharacterComponents();
+    player->InitializePlayerCam();
+    player->camera->window_manager = window_manager;
+    player->camera->entityList = &entityList;
+    player->camera->SetPlayerTransform(player);
     Cast<Renderer>(player->components.at("rend"))->SetTexture(player);
     Platform* platform = ObjectManager::get()->CastCreateObject<Platform>(Platform::ClassName());
     Cast<Renderer>(platform->components.at("rend"))->SetTexture(platform);
+    Cast<Renderer>(platform->components.at("rend"))->sprite.setScale(500,1);
     RegisterActor(platform, platform->GetClass());
     
     window_manager->AddNewObject(Cast<Renderer>(player->components.at("rend")),0);
