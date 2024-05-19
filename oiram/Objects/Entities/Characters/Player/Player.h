@@ -9,8 +9,6 @@ class CameraManager;
 class Player : public Character
 {
 public:
-    bool resetVelocity = true;
-    bool jumping = false;
     CameraManager* camera;
     Player();
     float speed = 500.f;
