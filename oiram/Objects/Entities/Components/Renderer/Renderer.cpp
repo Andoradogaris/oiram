@@ -6,6 +6,7 @@ std::string Renderer::GetClass()
     return "Renderer";
 }
 
+//fonction constructeur qui initialise la map avec les chemins des textures du jeu
 Renderer::Renderer()
 {
     spriteMap = {
@@ -15,6 +16,7 @@ Renderer::Renderer()
     };
 }
 
+//fonction pour load la textures sur le sprite
 void Renderer::SetTexture(Entity* entity)
 {
     std::string Path = std::filesystem::current_path().parent_path().parent_path().string();
@@ -26,6 +28,7 @@ void Renderer::SetTexture(Entity* entity)
     sprite.setScale(1,1);
 }
 
+//fonction static pour récupérer le nom de la classe
 std::string Renderer::ClassName()
 {
     return "Renderer";

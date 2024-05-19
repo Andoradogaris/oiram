@@ -1,5 +1,6 @@
 #include "Components.h"
 
+//fonction pour set et get le parent d'une classe
 Components::Components(Entity* Parent)
 {
     Owner = Parent;

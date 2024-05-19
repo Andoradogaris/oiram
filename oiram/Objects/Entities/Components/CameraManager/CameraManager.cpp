@@ -5,12 +5,13 @@
 #include "../Renderer/Renderer.h"
 #include "../../../../Utils/Utils.h"
 #include "../../../../Utils/WindowManager/WindowManager.h"
-
+//fonction static pour recuper le nom de la classe (utiliser par l'afactory)
 std::string CameraManager::ClassName()
 {
     return "CameraManager";
 }
 
+//fonction pour deplacer chaque objet du monde a l'écran 
 void CameraManager::MoveCamera(Player* player)
 {
     Cast<Renderer>(player->components.at("rend"))->sprite.move(0, player->rb->velocity.y *  Utils::GetEngine()->deltaTime);
@@ -26,6 +27,7 @@ void CameraManager::MoveCamera(Player* player)
     }
 }
 
+//fonction pour set le transform de oiram en variable de la classe
 void CameraManager::SetPlayerTransform(Player* player)
 {
     playerTransform = Cast<Transform>(player->components.at("Transform"));

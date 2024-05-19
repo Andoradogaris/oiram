@@ -36,7 +36,8 @@ void EntityManager::CreateActor()
     platform2Rend->SetTexture(platform2);
     platform2Rend->sprite.scale(1.f, 5.f);
     RegisterActor(platform2, platform2->GetClass());
-    
+
+    //on enregistre les différentes entité dans la liste des entité a afficher a l'écran
     window_manager->AddNewObject(playerRend, 1);
     window_manager->AddNewObject(platformRend, 2);
     window_manager->AddNewObject(platform2Rend, 2);
@@ -52,6 +53,7 @@ void EntityManager::CreateActor()
     RegisterCollisionList();
 }
 
+//fonction pour lancer toutes les actions des différentes entité dans le jeu
 void EntityManager::ActorAction()
 {
     deltaTime = clock.restart().asSeconds();
@@ -66,6 +68,7 @@ void EntityManager::ActorAction()
     }
 }
 
+//fonction pour récupérer le nom de la classe
 std::string EntityManager::GetClass()
 {
     return "EntityManager";
@@ -76,12 +79,14 @@ std::string EntityManager::ClassName()
     return "EntityManager";
 }
 
+//fonction pour enregistrer une entité dans la liste des enntité
 void EntityManager::RegisterActor(Entity* actor, std::string className)
 {
     EntityList* entity = new EntityList(className,actor);
     entityList.push_back(entity);
 }
 
+//fonction pour sauvegarder les collision d'une entité
 void EntityManager::RegisterCollisionList()
 {
     

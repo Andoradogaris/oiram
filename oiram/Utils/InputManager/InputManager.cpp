@@ -1,10 +1,17 @@
 ﻿#include "InputManager.h"
 
+//fonction pour récuperer le nom de la classe
 std::string InputManager::GetClass()
 {
     return "EventManager";
 }
 
+std::string InputManager::ClassName()
+{
+    return "EventManager";
+}
+
+//fonction pour set la window en variable de la classe
 void InputManager::SetWindowRef(sf::RenderWindow* wind)
 {
     windowscreen = wind;
@@ -94,7 +101,4 @@ void InputManager::ListenEvent()
     
 }
 
-std::string InputManager::ClassName()
-{
-    return "EventManager";
-}
+

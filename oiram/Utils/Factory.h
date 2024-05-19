@@ -33,7 +33,7 @@ public:
     {
         Clear();
     }
-
+    //fonction pour enregistrer une nouvelle classe
     void RegisterNewCreator(std::string classId, Creator<BaseClass>* creatorClass)
     {
         if(!factoryConstructor.contains(classId))
@@ -41,12 +41,12 @@ public:
             factoryConstructor.insert(std::make_pair(classId, creatorClass));
         }
     }
-
+    //fonction pour vérifier si la classe a déjà été enregistré
     bool IsAlreadyRegistered(std::string classId)
     {
         return factoryConstructor.contains(classId);
     }
-    
+    //fonction pour ajouter une classe dans l'afactory et la créé
     BaseClass* CreateClass(std::string classId)
     {
         BaseClass* object = nullptr;
@@ -56,7 +56,7 @@ public:
         }
         return object;
     }
-    
+    //fonction pour clear l'afactory
     void Clear()
     {
         factoryConstructor.clear();

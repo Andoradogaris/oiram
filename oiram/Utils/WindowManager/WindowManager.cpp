@@ -10,7 +10,7 @@
 #include "../ObjectManager/ObjectManager.h"
 
 std::list<GameObject> objectToDraw;
-
+//fonction qui dessine chaque objet a l'écran et qui réinitialise le delatime du moteur
 void WindowManager::WindowDraw()
 {
 
@@ -41,16 +41,19 @@ void WindowManager::WindowDraw()
     clock.restart();
 }
 
-std::string WindowManager::GetClass()
-{
-    return "WindowManager";
-}
-
+//fonction pour enregistrer un objet dans la liste des objets a dessiner
 void WindowManager::AddNewObject(Renderer* object, int layerValue)
 {
     objectToDraw.push_back(std::make_pair(object, layerValue));
     
 }
+
+//fonction pour obtenir le nom de la classe
+std::string WindowManager::GetClass()
+{
+    return "WindowManager";
+}
+
 
 std::string WindowManager::ClassName()
 {

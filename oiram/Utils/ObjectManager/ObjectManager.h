@@ -14,6 +14,7 @@ private:
     static ObjectManager* m_instance;
 public:
     ~ObjectManager();
+    //fonction template qui permet d'utiliser l'afactory pour créer une classe et l'enregistrer dans notre factory
     template<class T = BaseObject>
     T* CastCreateObject(std::string classId)
     {
