@@ -21,9 +21,6 @@ void WindowManager::WindowDraw()
     sf::RenderWindow window(sf::VideoMode(horizontal, vertical), "My window");
     inputManagerGame->SetWindowRef(&window);
     inputManagerGame->player = player;
-
-
-
     
     while (window.isOpen())
     {
@@ -38,7 +35,6 @@ void WindowManager::WindowDraw()
         {
             window.draw(obj.first->sprite);
         }
-
         window.display();
     }
     

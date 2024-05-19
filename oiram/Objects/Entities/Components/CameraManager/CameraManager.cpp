@@ -16,10 +16,12 @@ void CameraManager::MoveCamera(Player* player)
     Cast<Renderer>(player->components.at("rend"))->sprite.move(0, player->rb->velocity.y *  Utils::GetEngine()->deltaTime);
     for(size_t i = 0;  i < window_manager->objectToDraw.size(); i++)
     {
+        
         rendererPair = window_manager->objectToDraw.at(i);
-        if(rendererPair.first->sprite.getPosition().x > 10)
+        if(rendererPair.first->sprite.getPosition().x != player->renderer->sprite.getPosition().x
+            || rendererPair.first->sprite.getPosition().y != player->renderer->sprite.getPosition().y)
         {
-            std::cout << "test" << std::endl;
+            rendererPair.first->sprite.move(-player->rb->velocity.x*Utils::GetEngine()->deltaTime,0);
         }
     }
 }

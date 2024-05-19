@@ -1,8 +1,8 @@
 #include "Character.h"
-
 #include "../../../Physics/Collision/Collision.h"
 #include "../../../Physics/Rigidbody/Rigidbody.h"
 #include "../../../Utils/ObjectManager/ObjectManager.h"
+
 
 void Character::ApplyMovement(float deltaTime)
 {
@@ -15,6 +15,7 @@ std::string Character::GetClass()
 
 void Character::InitCharacterComponents()
 {
+    //On ajoute les components propres à notre personnage
     rb = ObjectManager::get()->CastCreateObject<Rigidbody>(Rigidbody::ClassName());
     AddComponent("rigidbody",rb);
     

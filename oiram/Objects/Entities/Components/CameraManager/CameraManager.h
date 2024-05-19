@@ -17,7 +17,7 @@ public:
     WindowManager* window_manager;
     std::pair<Renderer*, int> rendererPair;
     float maxX = 1920;
-    float minX = 500;
+    float minX = 600;
     void MoveCamera(Player* player);
     void SetPlayerTransform(Player* player);
 };

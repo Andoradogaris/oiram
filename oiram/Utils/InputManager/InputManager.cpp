@@ -31,7 +31,7 @@ void InputManager::ListenEvent()
         if(event.type == sf::Event::KeyReleased )
         {
             if(event.key.scancode == sf::Keyboard::Scan::Space)
-            {
+            { 
                 player->Jump();
             }
         }
@@ -42,14 +42,17 @@ void InputManager::ListenEvent()
         }else if(event.key.scancode == sf::Keyboard::Scan::Left)
         {
             player->Move(-10.f,0.f);
+        }else
+        {
+            // std::cout << "reset" << std::endl;
+            player-> ResetMove();
         }
-
         if(event.key.scancode == sf::Keyboard::Scan::Up)
         {
-            player->Move(0.f,-10.f);
+            // player->Move(0.f,-10.f);
         }else if(event.key.scancode == sf::Keyboard::Scan::Down)
         {
-            player->Move(0.f,10.f);
+           // player->Move(0.f,10.f);
         }
 
     }

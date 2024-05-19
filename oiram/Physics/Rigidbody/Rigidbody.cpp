@@ -17,14 +17,17 @@ void Rigidbody::AddForce(const Vector2<float> force, ForceMode mode,Collision* c
 
     switch(mode)
     {
+        //Vitesse constante pas d'accélération
         case Constant:
             velocity.x += force.x * deltaTime;
             velocity.y += force.y * deltaTime;
             break;
-        case Impulse:
+        //Accélération à un moment T
+        case Impulse: 
             velocity.x -= force.x;
             velocity.y -= force.y;
             break;
+        //Comme un impulse mais dans une direction aléatoire
         case Explosive:
 
             std::random_device rd;
@@ -69,25 +72,25 @@ void Rigidbody::CheckCollisions(Collision* col, Renderer* rend)
             
         switch(directions.at(i))
         {
-        case Haut:
-            if(velocity.y > 0)
-            {
-                velocity.y = 0;
-            }
-            break;
-        case Bas:
+        case Up:
             if(velocity.y < 0)
             {
                 velocity.y = 0;
             }
             break;
-        case Gauche:
+        case Down:
+            if(velocity.y > 0)
+            {
+                velocity.y = 0;
+            }
+            break;
+        case Left:
             if(velocity.x < 0)
             {
                 velocity.x = 0;
             }
             break;
-        case Droite:
+        case Right:
             if(velocity.x > 0)
             {
                 velocity.x = 0;

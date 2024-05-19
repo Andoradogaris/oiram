@@ -6,6 +6,8 @@
 #include "../../Objects/Entities/Components/Renderer/Renderer.h"
 #include "../InputManager/InputManager.h"
 
+
+
 class EntityManager;
 
 class WindowManager : public BaseObject
