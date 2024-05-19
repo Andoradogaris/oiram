@@ -12,4 +12,8 @@ public:
     void ListenEvent();
     static std::string ClassName();
     Player* player;
+    bool right = false;
+    bool left = false;
+    bool up = false;
+    bool down = false;
 };
